@@ -94,7 +94,7 @@ without having to implement a regex lexer from scratch.
 
 ---
 
-## Console Demo
+## 💻 Console Demo
 
 A minimal console application is included to demonstrate the parser behavior.
 
