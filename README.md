@@ -8,7 +8,7 @@ It parses regular expressions into an AST, visualizes them, and allows step-by-s
 ---
 
 ## 🎬 Demonstration
-### ALL functions
+### All functions
 
 ### Parsing
 
@@ -89,5 +89,5 @@ without having to implement a regex lexer from scratch.
 ---
 
 ## 📄 License
-  
-[MIT]([MY LICENSE ADDRESS](https://github.com/longxya/regexdev/blob/master/LICENSE))
+
+[MIT](https://github.com/longxya/regexdev/blob/master/LICENSE)
