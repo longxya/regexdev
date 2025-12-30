@@ -9,19 +9,19 @@ It parses regular expressions into an AST, visualizes them, and allows step-by-s
 
 ## 🎬 Demonstration
 ### All functions
-![Demonstration1](https://github.com/user-attachments/assets/15e92004-6050-4d33-a653-c9fba27d7eab)
+![Demonstration2](https://github.com/user-attachments/assets/fb4b3471-7067-4ee2-ba78-60f4d1d9f1f7)
 
 ### Parsing
-![Parse](https://github.com/user-attachments/assets/e5b7be99-3d11-4aae-9efe-528e032d3ccf)
+![Parse1](https://github.com/user-attachments/assets/f2290d6d-6e3d-402f-b090-ee5dfb8357fc)
 
 ### Debugging
-![Debug](https://github.com/user-attachments/assets/add74fc5-68f0-4804-9bf7-b460842f146f)
+![Debug1](https://github.com/user-attachments/assets/bba17b5a-f62d-4b43-932e-af3fefae38fb)
 
 ### Editing
 ![Edit](https://github.com/user-attachments/assets/69cc5756-aae2-41fa-bb4c-23753b33fd72)
 
 ### Multi-Display
-![MultiDisplay](https://github.com/user-attachments/assets/edc4ebd7-4d45-46e5-8671-424c5c9163e8)
+![MultiDisplay1](https://github.com/user-attachments/assets/85f9fe48-7956-4f33-99da-ca4261d03f42)
 
 ### Breakpoints
 ![Breakpoints](https://github.com/user-attachments/assets/f8ef9030-f84c-42c2-b131-2fa23e8d0d28)
