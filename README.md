@@ -9,7 +9,7 @@ It parses regular expressions into an AST, visualizes them, and allows step-by-s
 
 ## 🎬 Demonstration
 ### All functions
-![Demonstration2](https://github.com/user-attachments/assets/fb4b3471-7067-4ee2-ba78-60f4d1d9f1f7)
+![Demonstration3](https://github.com/user-attachments/assets/5fb46bb8-258e-4219-9b69-07c63e19d100)
 
 ### Parsing
 ![Parse1](https://github.com/user-attachments/assets/f2290d6d-6e3d-402f-b090-ee5dfb8357fc)
@@ -91,6 +91,17 @@ new RegexParse().Parse(...)
 ```
 This allows you to focus on analysis, visualization, or matching logic,  
 without having to implement a regex lexer from scratch.
+
+---
+
+## Console Demo
+
+A minimal console application is included to demonstrate the parser behavior.
+
+Type a regex expression, then enter `parse` on a new line and press `Enter`
+to see the parsed AST output.
+<img width="1505" height="1012" alt="3ac9b184-e044-4ee9-bff8-aff03b881621" src="https://github.com/user-attachments/assets/bee3112d-642c-46ca-a4da-3075428b834f" />
+<img width="1884" height="932" alt="bf41a97a-9685-4457-bf99-2707d6b2404b" src="https://github.com/user-attachments/assets/132f7d72-e9cd-4728-a0bc-7bd48ceddad6" />
 
 ---
 
