@@ -105,6 +105,17 @@ to see the parsed AST output.
 
 ---
 
+## 📢 Feedback, Suggestions, and Discussions are Very Welcome! 
+
+I’d love to hear your thoughts on this project. If you have any suggestions, issues, or feature requests, please feel free to open an issue or contribute to the discussion.
+
+- **[Open an Issue](https://github.com/longxya/regexdev/issues)**
+- **[Start a Discussion](https://github.com/longxya/regexdev/discussions)**
+
+Your feedback will help make this project even better! 🚀
+
+---
+
 ## 📄 License
 
 [MIT](https://github.com/longxya/regexdev/blob/master/LICENSE)
