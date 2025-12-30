@@ -82,6 +82,12 @@ Recently, I redesigned and rewrote the **regex parser** from scratch with a much
 
 As a result, the parser became the **most stable and reusable part** of the project, and is published independently.
 
+### Especially:
+
+I wrote a [C# regex](https://github.com/longxya/regexdev/blob/main/RegexDev/RegexParse.cs#L933) to replace the lexer and handle most grammar checks.
+
+I didn’t want to write a lexical analyzer. 🚫
+
 ### Extension point
 
 If you want to experiment with your own parsing logic or build additional tooling on top of it, the main entry point is:
