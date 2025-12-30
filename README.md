@@ -9,22 +9,16 @@ It parses regular expressions into an AST, visualizes them, and allows step-by-s
 
 ## 🎬 Demonstration
 ### ALL functions
-![ALL functions](gif)
 
 ### Parsing
-![Parse Demo](gif)
 
 ### Debugging
-![Debug Demo](gif)
 
 ### Editing
-![Edit Demo](gif)
 
 ### Multi-Display
-![Multi Display Demo](gif)
 
 ### Breakpoints
-![Breakpoint Demo](gif)
 
 ---
 
@@ -96,4 +90,4 @@ without having to implement a regex lexer from scratch.
 
 ## 📄 License
   
-[MIT](MY LICENSE ADDRESS)
+[MIT]([MY LICENSE ADDRESS](https://github.com/longxya/regexdev/blob/master/LICENSE))
