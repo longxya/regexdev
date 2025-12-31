@@ -13,7 +13,7 @@ namespace RegexDebug.RegexDev
 		private static readonly bool[] InlineOptionThirdCharsLookup = new bool[128];
 		static RegexParse()
 		{
-			foreach (char c in "+-imnssxIMNSSX")
+			foreach (char c in "+-imnsxIMNSX")
 				InlineOptionThirdCharsLookup[c] = true;
 		}
 
@@ -114,11 +114,11 @@ namespace RegexDebug.RegexDev
 		///○ Cross-platform compatible conversion(Reference: https://github.com/dotnet/runtime/issues/111633)
 		///
 		/// A regex that can run on .NET framework, but cannot run on .NET5+ platform, 
-		/// such as `(?(exp)(?i)x|y)`, will be converted to a regex`?(exp)(?:(?i)x)|(?:(?i)y)` that can run on .NET5+ platform, 
-		/// so there is param patterndotNET5, counld be used for verification
+		/// such as `(?(exp)(?i)x|y)`, will be converted to a regex`(?(exp)(?:(?i)x)|(?:(?i)y)` that can run on .NET5+ platform, 
+		/// so there is param patterndotNET5, could be used for verification
 		/// </summary>
 		/// <param name="pattern"></param>
-		/// <param name="style">style of ast, 1-can run on the NET5+platform</param>
+		/// <param name="style">style of ast, 1 : convert ast for NET5+ platform</param>
 		/// <param name="patterndotNET5">Equivalent regex that can run on the NET5+platform</param>
 		/// <returns></returns>
 		/// <exception cref="Exception"></exception>
@@ -163,7 +163,7 @@ namespace RegexDebug.RegexDev
 				groupsHashSet.Add(namedCaptures[i].Value);
 
 			var NamedGroupNumberMap = new Dictionary<string, string>(groupsHashSet.Count - numGroupCount);//Store the correspondence between named groups and numerical numbers
-			//var NumbericGroupNameMap = new Dictionary<string, string>(numGroupCount);//Store the named capture group corresponding to the numerical number
+			//var NumericGroupNameMap = new Dictionary<string, string>(numGroupCount);//Store the named capture group corresponding to the numerical number
 			var namedGroupNumberIndex = numGroupCount + 1;
 			for (var i = 0; i < namedCaptures.Count; i++)
 			{
@@ -177,8 +177,8 @@ namespace RegexDebug.RegexDev
 				}
 				NamedGroupNumberMap.Add(namedCaptures[i].Value, numberStr);
 				NamedGroupNumberMap.Add(numberStr, namedCaptures[i].Value);//this should not containsKey, cause numberStr is newly generated
-				/*if (!NumbericGroupNameMap.ContainsKey(numberStr))
-					NumbericGroupNameMap.Add(numberStr, namedCaptures[i].Value);*/
+				/*if (!NumericGroupNameMap.ContainsKey(numberStr))
+					NumericGroupNameMap.Add(numberStr, namedCaptures[i].Value);*/
 				groupsHashSet.Add(numberStr);//add the group number of named capture group into hashset
 			}
 			#endregion
@@ -430,7 +430,7 @@ namespace RegexDebug.RegexDev
 								condition.pattern2dotNET5 = (c1Cover, c2Cover, c3Cover, c3AddOptions);
 
 								if (NamedGroupNumberMap.ContainsKey(group)) condition.conditionGroup2RdName = NamedGroupNumberMap[group];
-								//else if (NumbericGroupNameMap.ContainsKey(group)) condition.conditionGroup2RdName = NumbericGroupNameMap[group];
+								//else if (NumericGroupNameMap.ContainsKey(group)) condition.conditionGroup2RdName = NumericGroupNameMap[group];
 
 								result = condition;
 							}
@@ -522,7 +522,7 @@ namespace RegexDebug.RegexDev
 								var panel = new RePanel(result, "");//add a group construct
 								panel.GroupingConstruct.Insert(0, leftBracket.Pattern);
 
-								panel.SetGroupAnotherdName(NamedGroupNumberMap, leftBracket.Pattern);
+								panel.SetGroupAnotherName(NamedGroupNumberMap, leftBracket.Pattern);
 
 								result = panel;
 							}
@@ -598,7 +598,7 @@ namespace RegexDebug.RegexDev
 							{
 								//\number is not backreference
 								//if \number is not backreference, number at least has two digits
-								var asciiNumber = "";//ascii 8-digit number
+								var asciiNumber = "";//octal digits (up to 3 digits)
 								var OctalLen = 0;
 								for (var j = 0; j < number.Length && j < 3; j++)
 								{
@@ -776,7 +776,7 @@ namespace RegexDebug.RegexDev
 				groupsHashSet.Add(namedCaptures[i].Value);
 
 			var NamedGroupNumberMap = new Dictionary<string, string>(groupsHashSet.Count - numGroupCount);//Store the correspondence between named groups and numerical numbers
-			//var NumbericGroupNameMap = new Dictionary<string, string>(numGroupCount);//Store the named capture group corresponding to the numerical number
+			//var NumericGroupNameMap = new Dictionary<string, string>(numGroupCount);//Store the named capture group corresponding to the numerical number
 			var namedGroupNumberIndex = numGroupCount + 1;
 			for (var i = 0; i < namedCaptures.Count; i++)
 			{
@@ -790,8 +790,8 @@ namespace RegexDebug.RegexDev
 				}
 				NamedGroupNumberMap.Add(namedCaptures[i].Value, numberStr);
 				NamedGroupNumberMap.Add(numberStr, namedCaptures[i].Value);//this should not containsKey, cause numberStr is newly generated
-				/*if (!NumbericGroupNameMap.ContainsKey(numberStr))
-					NumbericGroupNameMap.Add(numberStr, namedCaptures[i].Value);*/
+				/*if (!NumericGroupNameMap.ContainsKey(numberStr))
+					NumericGroupNameMap.Add(numberStr, namedCaptures[i].Value);*/
 				groupsHashSet.Add(numberStr);//add the group number of named capture group into hashset
 			}
 			#endregion
@@ -899,7 +899,7 @@ namespace RegexDebug.RegexDev
 		}
 
 		/// <summary>
-		/// record the time cost of the regex[ParsePatternRegex] match the target regex
+		/// Record time taken by ParsePatternRegex to match the target regex
 		/// </summary>
 		public double regexMatchTime { get; set; } = 0d;
 	}
@@ -1054,7 +1054,7 @@ namespace RegexDebug.RegexDev
 		/// <param name="panel"></param>
 		/// <param name="NamedGroupNumberMap"></param>
 		/// <param name="groupconstrucValue"></param>
-		public static void SetGroupAnotherdName(this RePanel panel, Dictionary<string, string> NamedGroupNumberMap, string groupconstrucValue)
+		public static void SetGroupAnotherName(this RePanel panel, Dictionary<string, string> NamedGroupNumberMap, string groupconstrucValue)
 		{
 			if (groupconstrucValue.Length > 3)//check if is capturing group, only when the length > 3, it maybe a capturing group
 			{
