@@ -94,7 +94,6 @@ namespace RegexDebug.RegexDev
 				if (condition.pattern2dotNET5.c2Cover) sb.Append("(?:");
 				GetUnitPattern(condition.condition2, sb);
 				if (condition.pattern2dotNET5.c2Cover) sb.Append(")");
-				//if (condition.condition3.HighMode.Count > 0 || condition.condition3.addBracket || condition.condition3.list.Count > 0)
 				if (condition.HaveNoBanch)
 					sb.Append("|");
 				if (condition.pattern2dotNET5.c3Cover) sb.Append("(?:");
@@ -111,7 +110,7 @@ namespace RegexDebug.RegexDev
 		/// The following actions may be performed:
 		///○ Simplify quantifiers
 		///○ Move quantifiers after ignored whitespace, inline comments, and end-of-line comments
-		///○ Simplify redundant '|' in conditional expressions
+		///○ Simplify redundant '|' in conditional constructs
 		///○ Cross-platform compatible conversion(Reference: https://github.com/dotnet/runtime/issues/111633)
 		///
 		/// A regex that can run on .NET framework, but cannot run on .NET5+ platform, 
@@ -154,7 +153,7 @@ namespace RegexDebug.RegexDev
 			if (q1s.Count != blockLen || q2s.Count != blockLen || InLineComments.Count < blockLen)
 				throw new Exception("Internal error in regexdev");//prefix:q1:q2:InLineComment = 1:1:1:1+
 
-			#region Build a set of group names and numbers, to identify back-references and conditional alternations express
+			#region Build a set of group names and numbers, to identify back-references and `condition expression` of `conditional construct`
 			var numGroupCount = mh.Groups["groupCount"].Captures.Count;
 			var groupsHashSet = new HashSet<string>(numGroupCount + mh.Groups["groupName"].Captures.Count);
 			for (var i = 1; i <= numGroupCount; i++)
@@ -184,12 +183,12 @@ namespace RegexDebug.RegexDev
 			}
 			#endregion
 
-			var conditionDirectContainsOption = false;//Whether the condition expression directly contains inline options, used to determine whether the pattern needs to be converted for .NET5+
+			var conditionDirectContainsOption = false;//Whether the conditional construct directly contains inline options, used to determine whether the pattern needs to be converted for .NET5+
 
 			Stack<RegexPrefix> stack = new Stack<RegexPrefix>();
 			stack.Push(new RegexPrefix("("));//add a start prefix, virtual left bracket, root prefix
 
-			List<string> InlineOptions = new List<string>();//use to store inline options directly contained in conditional expressions
+			List<string> InlineOptions = new List<string>();//use to store inline options directly contained in conditional construct
 
 			var IgnoreWhiteSpaceCommentIndex = 0;//Index for ignoring whitespace and comments, cause it maybe much more than prefix
 			for (var i = 0; i < blockLen; i++)
@@ -216,7 +215,7 @@ namespace RegexDebug.RegexDev
 							stack.Peek().RegexNodeList.Add(new ReSingle(prefix.ToString()) { singleType = SingleType.InlineOptions });//Inline regex options
 						else
 						{
-							var regexPrefixType = new RegexPrefix(prefix);//group constructure[(?>,(?=], left bracket[(], condition expression[(?]
+							var regexPrefixType = new RegexPrefix(prefix);//group constructure[(?>,(?=], left bracket[(], conditional construct[(?]
 							if (prefix.Length == 1) //prefix == "("
 							{
 								if (groupingNumbers[groupingNumberIndex++].Length == 0)
@@ -259,7 +258,7 @@ namespace RegexDebug.RegexDev
 							var group = "";
 							if (c1.addBracket == true && c1.SequenceNodes.Count == 1 && c1.SequenceNodes[0] is ReSingle s)
 							{
-								//Determine whether the replacement construction is a capture group
+								//Determine whether the `condition expression` of ` conditional construct` is a capture group
 								if (s.pattern.Length == 0||!IsWordChar(s.pattern[0])) goto ConvertRegex;
 
 								if (s.pattern[0] >= '0' && s.pattern[0] <= '9')
@@ -273,14 +272,14 @@ namespace RegexDebug.RegexDev
 
 							ConvertRegex:
 
-							#region In .NET5+, condition expressions cannot directly contain inline options and regex options, need to cover something in the condition parts
+							#region In .NET5+, conditional construct cannot directly contain inline options and regex options, need to cover something in the condition parts
 							//(?(?n:())(?i)(?x)[a-z]|[A-Z]) => (?(?:(?n()))(?:(?i)(?x)[a-z])|(?:(?ix)[A-Z]))
 							(bool c1Cover, bool c2Cover, bool c3Cover, string c3AddOptions) = (false, false, false, "");
 							InlineOptions.Clear();
 							var hasOuterOptions = false;
 							if (group.Length == 0)
 							{
-								//No matter in .net framework or net5+, inline options are not allowed directly as the alternatives of condition expressions
+								//No matter in .net framework or net5+, inline options are not allowed directly as the `condition expression` of `conditional constructs`
 								hasOuterOptions = c1.GroupingConstruct.Count > 0 && InlineOptionThirdCharsLookup[c1.GroupingConstruct[0][1]];
 								if (hasOuterOptions)
 								{
@@ -767,7 +766,7 @@ namespace RegexDebug.RegexDev
 			if (q1s.Count != blockLen || q2s.Count != blockLen || InLineComments.Count < blockLen)
 				throw new Exception("Internal error in regexdev");//prefix:q1:q2:InLineComment = 1:1:1:1+
 
-			#region Build a set of group names and numbers, to identify back-references and conditional alternations express
+			#region Build a set of group names and numbers, to identify back-references and `condition expression` of `conditional construct`
 			var numGroupCount = mh.Groups["groupCount"].Captures.Count;
 			var groupsHashSet = new HashSet<string>(numGroupCount + mh.Groups["groupName"].Captures.Count);
 			for (var i = 1; i <= numGroupCount; i++)
@@ -797,9 +796,9 @@ namespace RegexDebug.RegexDev
 			}
 			#endregion
 
-			var conditionDirectContainsOption = false;//Whether the condition expression directly contains inline options, used to determine whether the pattern needs to be converted for .NET5+
+			var conditionDirectContainsOption = false;//Whether the conditional construct directly contains inline options, used to determine whether the pattern needs to be converted for .NET5+
 
-			List<string> InlineOptions = new List<string>();//use to store inline options directly contained in conditional expressions
+			List<string> InlineOptions = new List<string>();//use to store inline options directly contained in conditional construct
 
 			var IgnoreWhiteSpaceCommentIndex = 0;//Index for ignoring whitespace and comments, cause it maybe much more than prefix
 			for (var i = 0; i < blockLen; i++)
@@ -817,7 +816,7 @@ namespace RegexDebug.RegexDev
 						}
 						else
 						{
-							//group constructure[(?>,(?=], left bracket[(], condition expression[(?]
+							//group constructure[(?>,(?=], left bracket[(], conditional construct[(?]
 						}
 					}
 					else if (prefix[0] == ')')
@@ -917,20 +916,20 @@ namespace RegexDebug.RegexDev
 		///○ Quantifier 2(in group#q2): Lazy matching symbol '?'
 		///○ Comment(in group#InLineComment): Inline comments, end-of-line comments, invalid whitespace(at least one empty comment as a separator)
 		///
-		/// record the group names by group#groupName and count numberic group by group#groupCount for back-references and conditional alternations express
+		/// record the group names by group#groupName and count numberic group by group#groupCount for back-references and `condition expression` of `conditional construct`
 		/// During parsing, this regex also:
 		///   - Tracks numbered and named capture groups
 		///   - Assigns incremental indices to capturing parentheses
 		///   - Marks non-capturing groups explicitly
 		/// This information is required to correctly resolve:
-		///   - Back-references (\516, \k<name>)
-		///   - Conditional expressions (?(cond)yes|no)
+		///   - Whether or not is a back reference (\516, \k<name>)
+		///   - Whether or not is a group condition expression (?(cond)yes|no)
 		/// and mark number of the bracket`()`, every `()` has a corresponding capture in group #p with an automatically incremented index( by group#groupNumber).
 		///    capture == "" means current `()` is a capturing group, otherwise it is not a capturing group or invalid by `(?(?=))`, `(?(?>))` etc.
 		/// </summary>
 		/// <returns></returns>
 		//[GeneratedRegex(@"(?ns)^(?>(?>(?'prefix'(?'open'\()(?(bracketX)(?'bracketX'))(?(bracketN)(?'bracketN'))(?>\?(?>(?>(?'quote'')|<)(?>(?'groupName'(?'onegroup'\w+))?(?'onegroup'-\w+)?)(?'-onegroup')(?'-onegroup')?(?((?'-quote'))'|>)|[>:]|<?[=!]|(?=\(([^?](?(openN)|(?'alternationConstructBracket'))|))|(?'openOption')(?>(?>\+(?'-openOption')?(?'openOption')|-(?'-openOption')?|[IMSims]+|[Xx]+(?(openOption)(?>(?'-openXOption')?(?'-closeXOption')?(?'openXOption'))|(?'-openXOption')?(?'-closeXOption')?(?'closeXOption'))|[Nn]+(?(openOption)(?>(?'-openNOption')?(?'-closeNOption')?(?'openNOption'))|(?'-openNOption')?(?'-closeNOption')?(?'closeNOption')))+)(?>(?'-open'\))(?>(?'-bracketX')|)(?>(?'-bracketN')|)|:)(?'-openOption')?(?>(?'-openXOption')(?(openX)|(?(bracketX)(?(?<=(?!\k'bracketX')(?>(?!\().*?))(?'-bracketX')|(?<=(?'bracketX'\().*?))|(?<=(?'bracketX'\().*?))(?'openX'))|(?'-closeXOption')(?(openX)(?(?<=(?!\k'bracketX')(?>(?!\().*?))(?'-bracketX')|(?<=(?'bracketX'\().*?))(?'-openX'))|)(?>(?'-openNOption')(?(openN)|(?(bracketN)(?(?<=(?!\k'bracketN')(?>(?!\().*?))(?'-bracketN')|(?<=(?'bracketN'\().*?))|(?<=(?'bracketN'\().*?))(?'openN'))|(?'-closeNOption')(?(openN)(?(?<=(?!\k'bracketN')(?>(?!\().*?))(?'-bracketN')|(?<=(?'bracketN'\().*?))(?'-openN'))|))|(?=[^?])(?(openN)|(?>(?'-alternationConstructBracket')|(?'groupCount')))))(?'q1')(?'q2')(?'InLineComment')|(?'prefix'\)(?'-open')(?(bracketX)(?(?<!\k'bracketX')(?'-bracketX')(?'-bracketX')?((?'-openX')|(?'openX'))|(?'-bracketX')))(?(bracketN)(?(?<!\k'bracketN')(?'-bracketN')(?'-bracketN')?((?'-openN')|(?'openN'))|(?'-bracketN')))|(?'open1'\[)(?>\^?)(?>(?'charrange'[]-](-([^][\\]|\\(?'ASCII2'[0-7]{1,3})|\\[^DdWwSsPpuxc]|\\u[0-9A-Fa-f]{4}|\\x[0-9A-Fa-f]{2}|\\c[A-Za-z[\\\]^_]))?)?)(?>(?>(?'open1'-\[)(?>(?'-charrange')?\^?)(?>(?'charrange'[]-](-([^][\\]|\\(?'ASCII2'[0-7]{1,3})|\\[^DdWwSsPpuxc]|\\u[0-9A-Fa-f]{4}|\\x[0-9A-Fa-f]{2}|\\c[A-Za-z[\\\]^_]))?)?)|(([^]\\]|\\(?'ASCII1'[0-7]{1,3})|\\[^DdWwSsPpuxc]|\\u[0-9A-Fa-f]{4}|\\x[0-9A-Fa-f]{2}|\\c[A-Za-z[\\\]^_])(-([^][\\]|\\(?'ASCII2'[0-7]{1,3})|\\[^DdWwSsPpuxc]|\\u[0-9A-Fa-f]{4}|\\x[0-9A-Fa-f]{2}|\\c[A-Za-z[\\\]^_]))?)|\\(?>[DdWwSs]|[Pp]\{[A-Za-z\d-]+\})|(?'-charrange'))+)\-?(?>(?'-open1'\])+)(?(open1)(?!))|\\(k(<|(?<quote>'))([0-9]+|(?![0-9]+)\w+)(?((?'-quote'))'|>)|[dDwWsSAzZGbB]|[0-9]+((?>[^[+*?()\\|\t\r\n\f]|\\[^Pp\dkcdDwWsSAzZGbBux])(?![*+?]|\{\d+(,\d*)?\}))*|[Pp]\{[A-Za-z\d-]+\}|u([A-Fa-f0-9]{4})|x([A-Fa-f0-9]{2})|c([A-Za-z[\\\]^_])))(?(openX)(?'InLineComment'\(\?#(?>[^)]*)\)|[ \t\r\n\f]+|#[^\r\n]*)*(?'q1'([*+?]|\{\d+(,\d*)?\})?)(?'InLineComment'\(\?#(?>[^)]*)\)|[ \t\r\n\f]+|#[^\r\n]*)*(?'q2'\??)|(?'InLineComment'\(\?#(?>[^)]*)\))*(?'q1'([*+?]|\{\d+(,\d*)?\})?)(?'InLineComment'\(\?#(?>[^)]*)\))*(?'q2'\??))(?'InLineComment')|(?(openX)(?>(?>(?'prefix'[^+*?()\\|^$# \t\r\n\f]|\\.))(?>(?>(?>(?'InLineComment'\(\?#(?>[^)]*)\)|[ \t\r\n\f]+|#[^\r\n]*)+)(?'q1'([*+?]|\{\d+(,\d*)?\})?)|(?'q1'[*+?]|\{\d+(,\d*)?\}))(?'InLineComment'\(\?#(?>[^)]*)\)|[ \t\r\n\f]+|#[^\r\n]*)*(?'q2'\??)(?'InLineComment'))|(?'prefix'((?>[^[+*?()\\|^$#]|\\[^Pp\dkcuxdDwWsSAzZGbB])(?!(?>(?>\(\?#(?>[^)]*)\)|[ \t\r\n\f]+|#[^\r\n]*)*)(?>[*+?]|\{\d+(,\d*)?\}))[ \t\r\n\f]*)+)(?'q1')(?'q2')(?'InLineComment'))|(?>(?>(?'prefix'[^+*?()\\^$|]|\\.))(?>(?>(?'InLineComment'\(\?#(?>[^)]*)\))*)(?'q1'[*+?]|\{\d+(,\d*)?\})(?'InLineComment'\(\?#(?>[^)]*)\))*(?'q2'\??)(?'InLineComment'))|(?'prefix'((?>[^[+*?()\\|^$]|\\[^Pp\dkcuxdDwWsSAzZGbB])(?!(?>(?>\(\?#(?>[^)]*)\))*)(?>[*+?]|\{\d+(,\d*)?\})))+)(?'q1')(?'q2')(?'InLineComment')))|(?'prefix'[$^|])(?'q1')(?'q2')(?'InLineComment')|((?'InLineComment'\(\?#(?>[^)]*)\))(?'prefix')(?'InLineComment')(?'q1')(?'q2'))+|(?(openX)|(?!))(?'InLineComment'#[^\r\n]*)(?'InLineComment'[ \t\r\n\f]+|\(\?#(?>[^)]*)\)|#[^\r\n]*)*(?'q1')(?'q2')(?'prefix')(?'InLineComment'))+)(?!(?'-open'))$")]
-		[GeneratedRegex(@"(?ns)^(?>(?>(?'prefix'(?'open'\()(?(bracketX)(?'bracketX'))(?(bracketN)(?'bracketN'))(?>\?(?>(?>(?'quote'')|<)(?>(?'groupName'(?'onegroup'\w+))?(?'onegroup'-\w+)?)(?'-onegroup')(?'-onegroup')?(?((?'-quote'))'|>)|[>:]|<?[=!]|(?=\((?'-InvalidateNearestNumberedGroup')?([^?](?(openN)|(?'alternationConstructBracket'))|(?'InvalidateNearestNumberedGroup')))|(?'openOption')(?>(?>\+(?'-openOption')?(?'openOption')|-(?'-openOption')?|[IMSims]+|[Xx]+(?(openOption)(?>(?'-openXOption')?(?'-closeXOption')?(?'openXOption'))|(?'-openXOption')?(?'-closeXOption')?(?'closeXOption'))|[Nn]+(?(openOption)(?>(?'-openNOption')?(?'-closeNOption')?(?'openNOption'))|(?'-openNOption')?(?'-closeNOption')?(?'closeNOption')))+)(?>(?'-open'\))(?>(?'-bracketX')|)(?>(?'-bracketN')|)|:)(?'-openOption')?(?>(?'-openXOption')(?(openX)|(?(bracketX)(?(?<=(?!\k'bracketX')(?>(?!\().*?))(?'-bracketX')|(?<=(?'bracketX'\().*?))|(?<=(?'bracketX'\().*?))(?'openX'))|(?'-closeXOption')(?(openX)(?(?<=(?!\k'bracketX')(?>(?!\().*?))(?'-bracketX')|(?<=(?'bracketX'\().*?))(?'-openX'))|)(?>(?'-openNOption')(?(openN)|(?(bracketN)(?(?<=(?!\k'bracketN')(?>(?!\().*?))(?'-bracketN')|(?<=(?'bracketN'\().*?))|(?<=(?'bracketN'\().*?))(?'openN'))|(?'-closeNOption')(?(openN)(?(?<=(?!\k'bracketN')(?>(?!\().*?))(?'-bracketN')|(?<=(?'bracketN'\().*?))(?'-openN'))|))|(?=[^?])(?(openN)(?<=(?'groupNumber'.(?#used to mark current bracket's grouping number, capture empty content sign to have hnumber)))|(?>(?'-alternationConstructBracket')(?<=(?'groupNumber'.))|(?'groupCount'(?#used to count how many numberic captured groups))(?>(?'-InvalidateNearestNumberedGroup')(?<=(?'groupNumber'.))|(?'groupNumber'))))))(?'q1')(?'q2')(?'InLineComment')|(?'prefix'\)(?'-open')(?(bracketX)(?(?<!\k'bracketX')(?'-bracketX')(?'-bracketX')?((?'-openX')|(?'openX'))|(?'-bracketX')))(?(bracketN)(?(?<!\k'bracketN')(?'-bracketN')(?'-bracketN')?((?'-openN')|(?'openN'))|(?'-bracketN')))|(?'open1'\[)(?>\^?)(?>(?'charrange'[]-](-(?>[^][\\]|\\([0-7]{1,3}|[^DdWwSsPpuxc]|u[0-9A-Fa-f]{4}|x[0-9A-Fa-f]{2}|c[A-Za-z[\\\]^_])))?)?)(?>(?>(?'open1'-\[)(?>(?'-charrange')?\^?)(?>(?'charrange'[]-](-(?>[^][\\]|\\([0-7]{1,3}|[^DdWwSsPpuxc]|u[0-9A-Fa-f]{4}|x[0-9A-Fa-f]{2}|c[A-Za-z[\\\]^_])))?)?)|((?>[^]\\]|\\([0-7]{1,3}|[^DdWwSsPpuxc]|u[0-9A-Fa-f]{4}|x[0-9A-Fa-f]{2}|c[A-Za-z[\\\]^_]))(-(?>[^][\\]|\\([0-7]{1,3}|[^DdWwSsPpuxc]|u[0-9A-Fa-f]{4}|x[0-9A-Fa-f]{2}|c[A-Za-z[\\\]^_])))?)|\\(?>[DdWwSs]|[Pp]\{[A-Za-z\d-]+\})|(?'-charrange'))+)\-?(?>(?'-open1'\])+)(?(open1)(?!))|\\(k(<|(?<quote>'))([0-9]+|(?![0-9]+)\w+)(?((?'-quote'))'|>)|[dDwWsSAzZGbB]|[0-9]+((?>[^[+*?()\\|\t\r\n\f]|\\[^Pp\dkcdDwWsSAzZGbBux])(?![*+?]|\{\d+(,\d*)?\}))*|[Pp]\{[A-Za-z\d-]+\}|u([A-Fa-f0-9]{4})|x([A-Fa-f0-9]{2})|c([A-Za-z[\\\]^_])))(?(openX)(?'InLineComment'\(\?#(?>[^)]*)\)|[ \t\r\n\f]+|#[^\r\n]*)*(?'q1'([*+?]|\{\d+(,\d*)?\})?)(?'InLineComment'\(\?#(?>[^)]*)\)|[ \t\r\n\f]+|#[^\r\n]*)*(?'q2'\??)|(?'InLineComment'\(\?#(?>[^)]*)\))*(?'q1'([*+?]|\{\d+(,\d*)?\})?)(?'InLineComment'\(\?#(?>[^)]*)\))*(?'q2'\??))(?'InLineComment')|(?(openX)(?>(?>(?'prefix'[^+*?()\\|^$# \t\r\n\f]|\\.))(?>(?>(?>(?'InLineComment'\(\?#(?>[^)]*)\)|[ \t\r\n\f]+|#[^\r\n]*)+)(?'q1'([*+?]|\{\d+(,\d*)?\})?)|(?'q1'[*+?]|\{\d+(,\d*)?\}))(?'InLineComment'\(\?#(?>[^)]*)\)|[ \t\r\n\f]+|#[^\r\n]*)*(?'q2'\??)(?'InLineComment'))|(?'prefix'((?>[^[+*?()\\|^$#]|\\[^Pp\dkcuxdDwWsSAzZGbB])(?!(?>(?>\(\?#(?>[^)]*)\)|[ \t\r\n\f]+|#[^\r\n]*)*)(?>[*+?]|\{\d+(,\d*)?\}))[ \t\r\n\f]*)+)(?'q1')(?'q2')(?'InLineComment'))|(?>(?>(?'prefix'[^+*?()\\^$|]|\\.))(?>(?>(?'InLineComment'\(\?#(?>[^)]*)\))*)(?'q1'[*+?]|\{\d+(,\d*)?\})(?'InLineComment'\(\?#(?>[^)]*)\))*(?'q2'\??)(?'InLineComment'))|(?'prefix'((?>[^[+*?()\\|^$]|\\[^Pp\dkcuxdDwWsSAzZGbB])(?!(?>(?>\(\?#(?>[^)]*)\))*)(?>[*+?]|\{\d+(,\d*)?\})))+)(?'q1')(?'q2')(?'InLineComment')))|(?'prefix'[$^|])(?'q1')(?'q2')(?'InLineComment')|((?'InLineComment'\(\?#(?>[^)]*)\))(?'prefix')(?'InLineComment')(?'q1')(?'q2'))+|(?(openX)|(?!))(?'InLineComment'#[^\r\n]*)(?'InLineComment'[ \t\r\n\f]+|\(\?#(?>[^)]*)\)|#[^\r\n]*)*(?'q1')(?'q2')(?'prefix')(?'InLineComment'))+)(?!(?'-open'))$")]
+		[GeneratedRegex(@"(?ns)^(?>(?>(?'prefix'(?'open'\()(?(bracketX)(?'bracketX'))(?(bracketN)(?'bracketN'))(?>\?(?>(?>(?'quote'')|<)(?>(?'groupName'(?'onegroup'\w+))?(?'onegroup'-\w+)?)(?'-onegroup')(?'-onegroup')?(?((?'-quote'))'|>)|[>:]|<?[=!]|(?=\((?'-conditionExpress')?([^?](?(openN)|(?'conditionExpress'))|(?'InvalidateNearestNumberedGroup')))|(?'openOption')(?>(?>\+(?'-openOption')?(?'openOption')|-(?'-openOption')?|[IMSims]+|[Xx]+(?(openOption)(?>(?'-openXOption')?(?'-closeXOption')?(?'openXOption'))|(?'-openXOption')?(?'-closeXOption')?(?'closeXOption'))|[Nn]+(?(openOption)(?>(?'-openNOption')?(?'-closeNOption')?(?'openNOption'))|(?'-openNOption')?(?'-closeNOption')?(?'closeNOption')))+)(?>(?'-open'\))(?>(?'-bracketX')|)(?>(?'-bracketN')|)|:)(?'-openOption')?(?>(?'-openXOption')(?(openX)|(?(bracketX)(?(?<=(?!\k'bracketX')(?>(?!\().*?))(?'-bracketX')|(?<=(?'bracketX'\().*?))|(?<=(?'bracketX'\().*?))(?'openX'))|(?'-closeXOption')(?(openX)(?(?<=(?!\k'bracketX')(?>(?!\().*?))(?'-bracketX')|(?<=(?'bracketX'\().*?))(?'-openX'))|)(?>(?'-openNOption')(?(openN)|(?(bracketN)(?(?<=(?!\k'bracketN')(?>(?!\().*?))(?'-bracketN')|(?<=(?'bracketN'\().*?))|(?<=(?'bracketN'\().*?))(?'openN'))|(?'-closeNOption')(?(openN)(?(?<=(?!\k'bracketN')(?>(?!\().*?))(?'-bracketN')|(?<=(?'bracketN'\().*?))(?'-openN'))|))|(?=[^?])(?(openN)(?<=(?'groupNumber'.(?#used to mark current bracket's grouping number, capture empty content sign to have hnumber)))|(?>(?'-conditionExpress')(?<=(?'groupNumber'.))|(?'groupCount'(?#used to count how many numberic captured groups))(?>(?'-InvalidateNearestNumberedGroup')(?<=(?'groupNumber'.))|(?'groupNumber'))))))(?'q1')(?'q2')(?'InLineComment')|(?'prefix'\)(?'-open')(?(bracketX)(?(?<!\k'bracketX')(?'-bracketX')(?'-bracketX')?((?'-openX')|(?'openX'))|(?'-bracketX')))(?(bracketN)(?(?<!\k'bracketN')(?'-bracketN')(?'-bracketN')?((?'-openN')|(?'openN'))|(?'-bracketN')))|(?'open1'\[)(?>\^?)(?>(?'charrange'[]-](-(?>[^][\\]|\\([0-7]{1,3}|[^DdWwSsPpuxc]|u[0-9A-Fa-f]{4}|x[0-9A-Fa-f]{2}|c[A-Za-z[\\\]^_])))?)?)(?>(?>(?'open1'-\[)(?>(?'-charrange')?\^?)(?>(?'charrange'[]-](-(?>[^][\\]|\\([0-7]{1,3}|[^DdWwSsPpuxc]|u[0-9A-Fa-f]{4}|x[0-9A-Fa-f]{2}|c[A-Za-z[\\\]^_])))?)?)|((?>[^]\\]|\\([0-7]{1,3}|[^DdWwSsPpuxc]|u[0-9A-Fa-f]{4}|x[0-9A-Fa-f]{2}|c[A-Za-z[\\\]^_]))(-(?>[^][\\]|\\([0-7]{1,3}|[^DdWwSsPpuxc]|u[0-9A-Fa-f]{4}|x[0-9A-Fa-f]{2}|c[A-Za-z[\\\]^_])))?)|\\(?>[DdWwSs]|[Pp]\{[A-Za-z\d-]+\})|(?'-charrange'))+)\-?(?>(?'-open1'\])+)(?(open1)(?!))|\\(k(<|(?<quote>'))([0-9]+|(?![0-9]+)\w+)(?((?'-quote'))'|>)|[dDwWsSAzZGbB]|[0-9]+((?>[^[+*?()\\|\t\r\n\f]|\\[^Pp\dkcdDwWsSAzZGbBux])(?![*+?]|\{\d+(,\d*)?\}))*|[Pp]\{[A-Za-z\d-]+\}|u([A-Fa-f0-9]{4})|x([A-Fa-f0-9]{2})|c([A-Za-z[\\\]^_])))(?(openX)(?'InLineComment'\(\?#(?>[^)]*)\)|[ \t\r\n\f]+|#[^\r\n]*)*(?'q1'([*+?]|\{\d+(,\d*)?\})?)(?'InLineComment'\(\?#(?>[^)]*)\)|[ \t\r\n\f]+|#[^\r\n]*)*(?'q2'\??)|(?'InLineComment'\(\?#(?>[^)]*)\))*(?'q1'([*+?]|\{\d+(,\d*)?\})?)(?'InLineComment'\(\?#(?>[^)]*)\))*(?'q2'\??))(?'InLineComment')|(?(openX)(?>(?>(?'prefix'[^+*?()\\|^$# \t\r\n\f]|\\.))(?>(?>(?>(?'InLineComment'\(\?#(?>[^)]*)\)|[ \t\r\n\f]+|#[^\r\n]*)+)(?'q1'([*+?]|\{\d+(,\d*)?\})?)|(?'q1'[*+?]|\{\d+(,\d*)?\}))(?'InLineComment'\(\?#(?>[^)]*)\)|[ \t\r\n\f]+|#[^\r\n]*)*(?'q2'\??)(?'InLineComment'))|(?'prefix'((?>[^[+*?()\\|^$#]|\\[^Pp\dkcuxdDwWsSAzZGbB])(?!(?>(?>\(\?#(?>[^)]*)\)|[ \t\r\n\f]+|#[^\r\n]*)*)(?>[*+?]|\{\d+(,\d*)?\}))[ \t\r\n\f]*)+)(?'q1')(?'q2')(?'InLineComment'))|(?>(?>(?'prefix'[^+*?()\\^$|]|\\.))(?>(?>(?'InLineComment'\(\?#(?>[^)]*)\))*)(?'q1'[*+?]|\{\d+(,\d*)?\})(?'InLineComment'\(\?#(?>[^)]*)\))*(?'q2'\??)(?'InLineComment'))|(?'prefix'((?>[^[+*?()\\|^$]|\\[^Pp\dkcuxdDwWsSAzZGbB])(?!(?>(?>\(\?#(?>[^)]*)\))*)(?>[*+?]|\{\d+(,\d*)?\})))+)(?'q1')(?'q2')(?'InLineComment')))|(?'prefix'[$^|])(?'q1')(?'q2')(?'InLineComment')|((?'InLineComment'\(\?#(?>[^)]*)\))(?'prefix')(?'InLineComment')(?'q1')(?'q2'))+|(?(openX)|(?!))(?'InLineComment'#[^\r\n]*)(?'InLineComment'[ \t\r\n\f]+|\(\?#(?>[^)]*)\)|#[^\r\n]*)*(?'q1')(?'q2')(?'prefix')(?'InLineComment'))+)(?!(?'-open'))$")]
 		internal static partial Regex ParsePatternRegex();
 	}
 
