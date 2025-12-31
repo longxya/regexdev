@@ -1,4 +1,4 @@
-# regexdev
+# [regexdev](https://www.regexdev.com/)
 
 A visualizer, debugger, and editor for **C#-style regex**.
 
@@ -9,16 +9,22 @@ It parses regular expressions into an AST, visualizes them, and allows step-by-s
 
 ## 🎬 Demonstration
 ### All functions
+![Demonstration3](https://github.com/user-attachments/assets/5fb46bb8-258e-4219-9b69-07c63e19d100)
 
 ### Parsing
+![Parse1](https://github.com/user-attachments/assets/f2290d6d-6e3d-402f-b090-ee5dfb8357fc)
 
 ### Debugging
+![Debug1](https://github.com/user-attachments/assets/bba17b5a-f62d-4b43-932e-af3fefae38fb)
 
 ### Editing
+![Edit](https://github.com/user-attachments/assets/69cc5756-aae2-41fa-bb4c-23753b33fd72)
 
 ### Multi-Display
+![MultiDisplay1](https://github.com/user-attachments/assets/85f9fe48-7956-4f33-99da-ca4261d03f42)
 
 ### Breakpoints
+![Breakpoints](https://github.com/user-attachments/assets/f8ef9030-f84c-42c2-b131-2fa23e8d0d28)
 
 ---
 
@@ -76,6 +82,12 @@ Recently, I redesigned and rewrote the **regex parser** from scratch with a much
 
 As a result, the parser became the **most stable and reusable part** of the project, and is published independently.
 
+### Especially:
+
+I wrote a [C# regex](https://github.com/longxya/regexdev/blob/main/RegexDev/RegexParse.cs#L933) to replace the lexer and handle most grammar checks.
+
+I didn’t want to write a lexical analyzer. 🚫
+
 ### Extension point
 
 If you want to experiment with your own parsing logic or build additional tooling on top of it, the main entry point is:
@@ -85,6 +97,28 @@ new RegexParse().Parse(...)
 ```
 This allows you to focus on analysis, visualization, or matching logic,  
 without having to implement a regex lexer from scratch.
+
+---
+
+## 💻 Console Demo
+
+A minimal console application is included to demonstrate the parser behavior.
+
+Type a regex expression, then enter `parse` on a new line and press `Enter`
+to see the parsed AST output.
+<img width="1505" height="1012" alt="3ac9b184-e044-4ee9-bff8-aff03b881621" src="https://github.com/user-attachments/assets/bee3112d-642c-46ca-a4da-3075428b834f" />
+<img width="1884" height="932" alt="bf41a97a-9685-4457-bf99-2707d6b2404b" src="https://github.com/user-attachments/assets/132f7d72-e9cd-4728-a0bc-7bd48ceddad6" />
+
+---
+
+## 📢 Feedback, Suggestions, and Discussions are Very Welcome! 
+
+I’d love to hear your thoughts on this project. If you have any suggestions, issues, or feature requests, please feel free to open an issue or contribute to the discussion.
+
+- **[Open an Issue](https://github.com/longxya/regexdev/issues)**
+- **[Start a Discussion](https://github.com/longxya/regexdev/discussions)**
+
+Your feedback will help make this project even better! 🚀
 
 ---
 
