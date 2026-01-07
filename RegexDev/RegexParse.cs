@@ -102,7 +102,7 @@ namespace RegexDebug.RegexDev
 				if (condition.pattern2dotNET5.c3Cover) sb.Append(")");
 				sb.Append(")");
 			}
-			else throw new Exception("条件分支不可能到这里");
+			else throw new Exception("Invalid node type - this code path should be unreachable.");
 		}
 
 		/// <summary>

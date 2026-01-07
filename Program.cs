@@ -1,5 +1,6 @@
 ﻿using RegexDebug.RegexDev;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -9,6 +10,8 @@ namespace RegexDebug
     {
         static void Main(string[] args)
         {
+			EnableVirtualTerminalProcessing();
+
 			var pattern = @"(?x:#this ia a regex to quickly match any very long palindrome string
 (?=^(?'len'.)+)(?=(?(h)(?'-h')(?'half')(?'-len').|(?'h')(?'-len').)+)(?'-h')?(?'half')#first to obtain half of the length of the text to be matched
 (?i)
@@ -22,12 +25,14 @@ namespace RegexDebug
 			Console.WriteLine(regexCanRunOnDotNET5);
 			RegexParserUtils.PrintColorASTTree(rootNode);
 
-
+			
 			Test();
 		}
 
 		private static void Test()
 		{
+			PrintRegexDev();
+
 			int customBufferSize = 10000 * 10;
 			Console.SetIn(new StreamReader(
 				Console.OpenStandardInput(customBufferSize),
@@ -137,6 +142,40 @@ namespace RegexDebug
 			}
 		}
 
+		private static void PrintRegexDev()
+		{
+			Console.ForegroundColor = ConsoleColor.DarkYellow;
+			Console.WriteLine("Visit [https://github.com/longxya/regexdev] to get more information.");
+			Console.ForegroundColor = ConsoleColor.White;
+			Console.WriteLine();
+		}
 
-    }
+		#region Enable virtual terminal processing. Make ANSI colors effective
+		[DllImport("kernel32.dll", SetLastError = true)]
+		static extern IntPtr GetStdHandle(int nStdHandle);
+
+		[DllImport("kernel32.dll")]
+		static extern bool GetConsoleMode(IntPtr hConsoleHandle, out uint lpMode);
+
+		[DllImport("kernel32.dll")]
+		static extern bool SetConsoleMode(IntPtr hConsoleHandle, uint dwMode);
+
+		const int STD_OUTPUT_HANDLE = -11;
+		const uint ENABLE_VIRTUAL_TERMINAL_PROCESSING = 0x0004;
+
+		static void EnableVirtualTerminalProcessing()
+		{
+			var handle = GetStdHandle(STD_OUTPUT_HANDLE);
+			uint mode;
+			if (!GetConsoleMode(handle, out mode))
+			{
+				return;
+			}
+			mode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+			SetConsoleMode(handle, mode);
+		}
+		#endregion
+
+
+	}
 }
