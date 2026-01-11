@@ -718,6 +718,8 @@ namespace RegexDebug
 			sb.AppendLine("            </ul>");
 			sb.AppendLine("        </div>");
 
+			sb.AppendLine("        <div class=\"legend\"><div class=\"legend-item\"><a href=\"https://github.com/longxya/regexdev\" target=\"_blank\">github</a></div><div class=\"legend-item\"><a href=\"https://regexdev.com\" target=\"_blank\">regexdev</a></div></div>");
+
 			sb.AppendLine("        <div class=\"legend\">");
 			sb.AppendLine("            <div class=\"legend-item\"><div class=\"legend-color sequence\"></div><span>Sequence (Concatenation)</span></div>");
 			sb.AppendLine("            <div class=\"legend-item\"><div class=\"legend-color alternation\"></div><span>Alternation (|)</span></div>");
@@ -989,7 +991,7 @@ namespace RegexDebug
 			Dictionary<string, int> nodeCounter,
 			StringBuilder styleBuilder,
 			StringBuilder nodeDefinitions,
-			StringBuilder relationships)
+			StringBuilder relationships,string relationshipMiddleString = "")
 		{
 			string nodeType = node.GetType().Name.Replace("Re", "");
 			string nodeId = $"{nodeType}_{(nodeCounter.ContainsKey(nodeType) ? nodeCounter[nodeType] : 0)}";
@@ -1007,7 +1009,7 @@ namespace RegexDebug
 
 			// 连接父节点（如果不是根节点）
 			if (parentId != "root")
-				relationships.AppendLine($"    {parentId} --> {nodeId}");
+				relationships.AppendLine($"    {parentId} {(relationshipMiddleString == ""?"": $"--{relationshipMiddleString}")}--> {nodeId}");
 
 			// 获取并应用样式类
 			string styleClass = GetMermaidNodeStyle(node);
@@ -1028,6 +1030,9 @@ namespace RegexDebug
 				}
 				else
 				{
+					BuildMermaidChartRecursive(condition.condition1, decisionNodeId, nodeCounter, styleBuilder, nodeDefinitions, relationships,
+						"Condition Express");
+
 					decisionLabel = "Condition satisfied?";
 				}
 
