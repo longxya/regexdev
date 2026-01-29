@@ -1,0 +1,2360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Html" xml:space="preserve">
+    <value>&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Regex railroad&lt;/title&gt;
+  &lt;script type="text/javascript" src="Lang.js"&gt;&lt;/script&gt;
+  &lt;script type="text/javascript" src="railroad_json.js"&gt;&lt;/script&gt;
+  &lt;style&gt;
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      margin: 0;
+      /*padding: 20px;*/
+      background-color: #f5f5f5;
+      /*user-select: none;*/
+    }
+
+    .regex-text {
+      font-size: 26px;
+      white-space: break-spaces;
+      word-break: break-word;
+      margin: 20px;
+      padding: 15px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      overflow-wrap: break-word;
+   white-space: normal;
+   word-break: break-all;
+    }
+
+    #railroad-diagram-container {
+      margin: 20px 20px 0 20px;
+      border: 1px solid #ddd;
+      background-color: white;
+      border-radius: 5px;
+      position: relative;
+      overflow: hidden;
+      min-height: 700px;
+      max-height: 925px;
+    }
+
+    #railroad-diagram-container:active {
+      cursor: grabbing;
+    }
+
+    #railroad-diagram {
+      transform-origin: 0 0;
+      transition: transform 0.1s ease;
+      text-align: center;
+    }
+
+    .zoom-controls {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 10px;
+      display: flex;
+      gap: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 100;
+      opacity: 0.01;
+    }
+
+    .zoom-controls:hover{
+      opacity: 1;
+    }
+
+    .zoom-controls button {
+      padding: 8px 12px;
+      background: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .zoom-controls button:hover {
+      background: #e0e0e0;
+    }
+
+    .zoom-level {
+      padding: 8px 12px;
+      min-width: 70px;
+      text-align: center;
+      font-size: 14px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    .box {
+      fill: #fff;
+      stroke: #333;
+      stroke-width: 2;
+    }
+
+    .highlight-box {
+      fill: yellow;
+      stroke: #333;
+      stroke-width: 2;
+    }
+
+    .text {
+      font-size: 14px;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+
+    .desc {
+      font-size: 12px;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+
+    .line {
+      stroke: #333;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .control {
+      fill: none;
+      stroke: #666;
+      stroke-width: 2;
+      stroke-dasharray: 6,4;
+    }
+
+    .lazy-line {
+      stroke: #333;
+      stroke-width: 2;
+      fill: none;
+      stroke-dasharray: 6,3;
+    }
+    
+    .label {
+      font-size: 12px;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+    
+    .container {
+      max-width: 1900px;
+      margin: 0 auto;
+    }
+
+    .line.green {
+      stroke: green !important;
+    }
+
+    .line.red {
+      stroke: red !important;
+    }
+
+    .line.colorful{
+      stroke: url(#colorCycle) !important; /* 引用上面定义的渐变规则 */
+      /*stroke-width: 1;*/
+      fill: none;
+    }
+
+    .dottedline{
+      stroke-dasharray: 6,3;
+    }
+
+    .condition-line {
+      stroke: purple;
+      stroke-width: 2;
+      fill: none;
+      fill: #ff00ff2f;
+      stroke-dasharray: 6,3;
+    }
+
+    /* 开始和结束节点的样式 */
+    .start-node {
+      fill: #4CAF50; /* 绿色实心圆 */
+      stroke: #333;
+      stroke-width: 1;
+    }
+
+    .end-node {
+      fill: #F44336; /* 红色实心圆 */
+      stroke: #333;
+      stroke-width: 1;
+    }
+
+    .box.colorful{
+      stroke: url(#colorCycle);
+      stroke: lightgrey;
+    }
+
+    .text.empty {
+      fill: lightgrey;
+    }
+
+    .mtEffectArea{
+      fill: gold !important;
+    }
+
+    .quantifierRect,.BracketRect{
+      pointer-events: all;
+    }
+
+    /* 贪婪量词框 */
+    .quantifierRect.line {
+      fill: #fff9e6;       /* 浅橙色背景 - 温暖感 */
+      stroke: #ff9800;     /* 橙色边框 - 醒目 */
+    }
+
+    /* 惰性量词框 */
+    .quantifierRect.lazy-line {
+      fill: #e6f7ff;       /* 浅蓝色背景 - 冷静感 */
+      stroke: #2196f3;     /* 蓝色边框 - 区分 */
+    }
+
+    .quantifierOutRect.line{
+      stroke: #ff9800;     /* 橙色边框 - 醒目 */
+    }
+
+    .quantifierOutRect.lazy-line{
+      stroke: #2196f3;     /* 蓝色边框 - 区分 */
+    }
+
+    tspan.include {
+     fill: green;
+ }
+
+ tspan.exclude {
+     fill: red;
+     text-decoration: none;
+ }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    &lt;!--&lt;h1&gt;正则表达式可视化&lt;/h1&gt;--&gt;
+    &lt;div id="regex-text" class="regex-text"&gt;
+      &lt;span id="regex-original"&gt;(\d|[wtf....^zzw-[0-9]])+(?&gt;\w|a)+?\d(?'2-1'$)&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;div style="display: flex;gap: 15px;margin: 20px;"&gt;
+     &lt;div&gt;&lt;a href="https://github.com/longxya/regexdev" target="_blank"&gt;github&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;a href="https://regexdev.com" target="_blank"&gt;regexdev&lt;/a&gt;&lt;/div&gt;
+     &lt;select id="language" style="font-size:1.55em;color:orange;"&gt;
+    &lt;option value="zh"&gt;简体中文&lt;/option&gt;
+    &lt;option value="en" selected=""&gt;English&lt;/option&gt;
+  &lt;/select&gt;
+ &lt;/div&gt;
+
+    &lt;div id="railroad-diagram-container"&gt;
+      &lt;div class="zoom-controls"&gt;
+        &lt;button id="zoom-in"&gt;+&lt;/button&gt;
+        &lt;div class="zoom-level" id="zoom-level"&gt;100%&lt;/div&gt;
+        &lt;button id="zoom-out"&gt;-&lt;/button&gt;
+        &lt;button id="reset-zoom"&gt;重置&lt;/button&gt;
+        &lt;button id="save-png"&gt;保存PNG&lt;/button&gt;
+        &lt;button id="save-svg"&gt;保存SVG&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div id="railroad-diagram"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div hidden&gt;
+  &lt;textarea id="patternText"&gt;&lt;/textarea&gt;&lt;textarea id="inputText"&gt;&lt;/textarea&gt;
+    &lt;div id="stepSlider"&gt;&lt;/div&gt;&lt;div id="sliderThumb"&gt;&lt;/div&gt;&lt;div id="sliderValue"&gt;&lt;/div&gt;&lt;div id="pattern"&gt;&lt;/div&gt;&lt;div id="Play"&gt;&lt;/div&gt;&lt;div id="Pause"&gt;&lt;/div&gt;&lt;div id="SppedUp"&gt;&lt;/div&gt;&lt;div id="SlowDown"&gt;&lt;/div&gt;&lt;div id="matchSelector"&gt;&lt;/div&gt;&lt;div id="showMatched"&gt;&lt;/div&gt;&lt;div id="unitHighlight"&gt;&lt;/div&gt;&lt;div id="structHighlight"&gt;&lt;/div&gt;&lt;div id="regexVisible"&gt;&lt;/div&gt;&lt;div id="debugArea"&gt;&lt;/div&gt;&lt;div id="debugAreaMobile"&gt;&lt;/div&gt;
+    &lt;div class="slider-container" hidden="" style="display:none;"&gt;&lt;/div&gt;&lt;div class="slider-track" hidden&gt;&lt;/div&gt;
+  &lt;e id="zhflowchart"&gt;&lt;/e&gt;&lt;e id="enflowchart"&gt;&lt;/e&gt;&lt;e id="graphCt"&gt;&lt;/e&gt;
+&lt;/div&gt;
+
+  &lt;script&gt;
+   var alwayshiddenComment = false, alwayshiddenInvalidspace = false;
+
+
+ const SVG_NS = "http://www.w3.org/2000/svg";
+
+ function svgEl(name, attrs = {}) {
+     const e = document.createElementNS(SVG_NS, name);
+     for (const k in attrs) e.setAttribute(k, attrs[k]);
+     return e;
+ }
+
+ // Layout for the regex components
+ class LayoutBox {
+     constructor(type, ast) {
+         this.type = type;
+         this.ast = ast;
+         this.x = 0;
+         this.y = 0;
+         this.width = 0;
+         this.height = 0;
+         this.entry = { x: 0, y: 0 };
+         this.exit = { x: 0, y: 0 };
+         this.children = [];
+     }
+ }
+
+ // Layout functions
+ function layout(ast) {
+     switch (ast.type) {
+         case "single": return layoutSingle(ast);
+         case "sequence": return layoutSequence(ast);
+         case "alt": return layoutAlt(ast);
+         case "repeat": return layoutRepeat(ast);
+         case "constructure": return layoutconstructure(ast);
+         case "condition": return layoutCondition(ast); // 新增：condition布局分支
+         case "start": return layoutStart(ast); // 新增：开始节点布局
+         case "end": return layoutEnd(ast); // 新增：结束节点布局
+         default: throw new Error("Unknown type " + ast.type);
+     }
+ }
+
+ function layoutSingle(ast) {
+     const box = new LayoutBox("single", ast);
+     const pad = 12;
+
+     if (alwayshiddenComment &amp;&amp; ast.IsComment) {
+         box.height = 30;
+         box.entry = { x: 0, y: box.height / 2 };
+         box.exit = { x: box.width, y: box.height / 2 };
+         return box;
+     }
+     var text = ast.text;
+     if (alwayshiddenInvalidspace &amp;&amp; ast.IgnorePatternWhitespace &amp;&amp; !ast.IsComment &amp;&amp; !ast.text.startsWith("[")) {
+         text = ast.text.replace(/([ \t\r\n\f]+)/g, "");
+         ast.NeedhiddenInvalidspace = true;
+         box.height = 30;
+         box.entry = { x: 0, y: box.height / 2 };
+         box.exit = { x: box.width, y: box.height / 2 };
+         if (text.length == 0) return box;
+     }
+
+
+     //var txtlen = ast.desc == null?ast.text.length : Math.max(ast.text.length, ast.desc.length);
+     var txtlen = text.length &gt; 0 ? text.length : msg["Empty"].length;
+     box.width = txtlen * 14 + pad * 2;
+     if (ast.desc != null)
+         box.width = Math.max(box.width, ast.desc.length * 8);
+
+     text = text.length &gt; 0 ? text.replaceWhiteSpace() : msg["Empty"];
+     box.width = MeasureText.getInstance().getWidth(text) + pad * 2;
+
+     var descWidth = 0;
+     if (ast.desc != null) {
+         descWidth = MeasureText.getInstance().getWidth(ast.desc) / MeasureText.scale;
+     }
+     if (descWidth &gt; box.width) box.width = descWidth;
+     else if (ast.IsComment) box.width /= 1.36;
+
+     box.height = 30;
+     box.entry = { x: 0, y: box.height / 2 };
+     box.exit = { x: box.width, y: box.height / 2 };
+     return box;
+ }
+
+ // 新增：开始节点布局
+ function layoutStart(ast) {
+     const box = new LayoutBox("start", ast);
+     const diameter = 24; // 实心圆直径
+     box.width = diameter;
+     box.height = diameter;
+     box.entry = { x: 0, y: box.height / 2 };
+     box.exit = { x: box.width, y: box.height / 2 };
+     return box;
+ }
+
+ // 新增：结束节点布局
+ function layoutEnd(ast) {
+     const box = new LayoutBox("end", ast);
+     const diameter = 24; // 实心圆直径
+     box.width = diameter;
+     box.height = diameter;
+     box.entry = { x: 0, y: box.height / 2 };
+     box.exit = { x: box.width, y: box.height / 2 };
+     return box;
+ }
+
+ function layoutSequence(ast) {
+     const box = new LayoutBox("sequence", ast);
+     const gap = 24;
+     let x = 0;
+     let h = 0;
+     ast.children.forEach(c =&gt; {
+         const child = layout(c);
+         child.x = x;
+         child.y = 0;
+         box.children.push(child);
+         x += child.width &gt; 0 ? (child.width + gap) : 0;
+         //x += child.width + gap;
+         h = Math.max(h, child.height);
+     });
+     box.width = x - gap;
+     box.height = h;
+     box.children.forEach(c =&gt; {
+         c.y = (box.height - c.height) / 2;
+     });
+     box.entry = { x: 0, y: box.height / 2 };
+     box.exit = { x: box.width, y: box.height / 2 };
+     return box;
+ }
+
+ function layoutAlt(ast) {
+     const box = new LayoutBox("alt", ast);
+     const gap = 20;
+     let y = 0;
+     let w = 0;
+
+     ast.children.forEach(c =&gt; {
+         const child = layout(c);
+         box.children.push(child);
+         y += child.height + gap;
+         w = Math.max(w, child.width);
+     });
+
+     box.width = w + 40;
+     box.height = y - gap;
+
+     let currentY = 0;
+     box.children.forEach((child, index) =&gt; {
+         child.x = (box.width - child.width) / 2;
+         child.y = currentY;
+         currentY += child.height + gap;
+     });
+
+     box.entry = { x: 0, y: box.height / 2 };
+     box.exit = { x: box.width, y: box.height / 2 };
+     return box;
+ }
+
+ function layoutRepeat(ast) {
+     const child = layout(ast.child);
+     const box = new LayoutBox("repeat", ast);
+     const pad = 12;
+     child.x = 30;
+     child.y = 20;
+     box.children.push(child);
+     box.width = child.width + 60 + Math.max(24, ast.kind.length * 8 + pad * 2);
+     box.height = child.height + 40;
+     box.entry = { x: 0, y: box.height / 2 };
+     box.exit = { x: box.width, y: box.height / 2 };
+     return box;
+ }
+
+ function layoutconstructure(ast) {
+     const beginstr = ast.pattern.length == 1 ? ast.pattern : `(${ast.pattern}`;
+
+     const child = layout(ast.child);
+     const box = new LayoutBox("constructure", ast);
+     const pad = 12;
+     child.x = ast.pattern.length * 8 + pad + 8;
+     child.x = MeasureText.getInstance().getWidth(beginstr) + pad + 6;
+     child.y = 16;
+     box.children.push(child);
+     box.width = child.width + MeasureText.getInstance().getWidth(beginstr) + pad * 2 + 16;
+     if (ast.desc != null) {
+         var offset = ast.desc.length * 8 - box.width;
+         if (offset &gt; 0) child.x += offset / 2;
+         box.width = Math.max(box.width, ast.desc.length * 8);
+     }
+     box.height = child.height + 32;
+     box.entry = { x: 0, y: box.height / 2 };
+     box.exit = { x: box.width, y: box.height / 2 };
+     return box;
+ }
+
+ // ========== 修改核心代码：condition 布局函数，使c2和c3各自居中 ==========
+ function layoutCondition(ast) {
+     const box = new LayoutBox("condition", ast);
+     const gap = 30; // 条件区与分支区的间距
+     const branchGap = 20; // c2/c3分支之间的垂直间距
+
+     var c1Before = msg["if group"];
+     var c1After = msg["has capture"];
+     var pad = 12;
+     var offset = 0;
+
+     // 步骤1：处理左侧条件块 - 有c1用c1，无c1则用group生成条件文本
+     let condNode;
+     if (ast.c1 &amp;&amp; !(ast.c1.type === 'sequence' &amp;&amp; ast.c1.children.length === 0)) {
+         condNode = layout(ast.c1);
+
+         c1Before = msg["if condition "];
+         c1After = msg["satisfied"];
+     } else {
+         // group条件：组名/组号，生成single类型节点
+         //const condText = ast.group ? `${msg["if group"]}${ast.group}${msg["has capture"]}` : "条件判断";
+         const condText = ast.group;
+         condNode = layout({ type: "single", text: condText, uid: ast.uid, astid: ast.astid });
+     }
+     offset = c1Before.length * 8 + pad * 2 + c1After.length * 8 + pad * 2;
+     condNode.x += 10 + offset - (c1After.length * 8 + pad * 2);
+     box.children.push(condNode);
+     box.c1Before = { text: c1Before, width: c1Before.length * 8 + pad * 2, x: 10 };
+     box.c1After = { text: c1After, width: c1After.length * 8 + pad * 2, x: condNode.width + condNode.x };
+
+     // 步骤2：处理右侧c2(yes)、c3(no)两个分支
+     const c2Node = layout(ast.c2);
+     const c3Node = layout(ast.c3);
+     box.children.push(c2Node);
+     box.children.push(c3Node);
+
+     // 步骤3：计算分支区的最大宽度（取两个分支宽度的最大值）
+     let branchMaxWidth = Math.max(c2Node.width, c3Node.width);
+
+     // 步骤4：设置整体宽高 - 每个分支都居中于自己的区域
+     // 每个分支区域宽度 = branchMaxWidth + 10（留一些边距）
+     box.width = condNode.width + gap + branchMaxWidth + gap + offset;
+     box.height = Math.max(condNode.height, c2Node.height + branchGap + c3Node.height) + gap;
+
+     /*设置菱形的高度*/
+     box.c1Before.height = Math.min(box.c1Before.width, box.height);
+     box.c1After.height = Math.min(box.c1After.width, box.height);
+
+     // 步骤5：坐标分配 - 左侧条件块居中，右侧分支上下排列并各自居中
+     condNode.x = 0; condNode.x += 10 + offset - (c1After.length * 8 + pad * 2);
+     condNode.y = (box.height - condNode.height) / 2;
+
+     // c2节点：位于上部，水平居中于分支区
+     c2Node.x = condNode.width + gap + (10 + offset) + (branchMaxWidth - c2Node.width) / 2;
+     c2Node.y = (box.height - (c2Node.height + branchGap + c3Node.height)) / 2;
+
+     // c3节点：位于下部，水平居中于分支区
+     c3Node.x = condNode.width + gap + (10 + offset) + (branchMaxWidth - c3Node.width) / 2;
+     c3Node.y = c2Node.y + c2Node.height + branchGap;
+
+     // 步骤6：设置condition的入口和出口
+     box.entry = { x: condNode.entry.x, y: condNode.entry.y + condNode.y };
+     box.exit = { x: box.width, y: box.height / 2 };
+     return box;
+ }
+
+ // Render SVG - 关键修改：使用实际绘制尺寸
+ function renderSvg(rootBox) {
+     // 计算实际需要的尺寸
+     const actualWidth = rootBox.width + 20;
+     const actualHeight = rootBox.height + 20;
+
+     // 创建SVG元素，使用具体像素值而不是百分比
+     const svg = svgEl("svg", {
+         width: actualWidth + "px",
+         height: actualHeight + "px",
+         viewBox: `0 0 ${actualWidth} ${actualHeight}`
+     });
+
+     const g = svgEl("g", { transform: "translate(10,10)" });
+     svg.appendChild(g);
+     draw(g, rootBox, 0, 0);
+     return svg;
+ }
+
+ function draw(parent, box, ox, oy) {
+     const x = ox + box.x;
+     const y = oy + box.y;
+
+     // 绘制不同类型的盒子
+     if (box.type === "start") {
+         drawStartNode(parent, box, x, y);
+         return;
+     } else if (box.type === "end") {
+         drawEndNode(parent, box, x, y);
+         return;
+     } else if (box.type === "repeat") {
+         drawRepeatBox(parent, box, x, y);
+     } else if (box.type === "constructure") {
+         drawconstructureBox(parent, box, x, y);
+     } else if (box.type === "condition") {
+         drawConditionBox(parent, box, x, y); // 新增：绘制condition
+     } else if (box.type === "single") {
+         drawSingle(parent, box, x, y);
+     }
+
+     // 递归绘制子节点
+     box.children.forEach(c =&gt; draw(parent, c, x, y));
+
+     // 绘制连接线
+     if (box.type === "sequence") {
+         for (let i = 0; i &lt; box.children.length - 1; i++) {
+             const a = box.children[i];
+             const b = box.children[i + 1];
+             if (a.width == 0 || b.width == 0) continue;
+             drawLine(parent,
+                 x + a.x + a.exit.x,
+                 y + a.y + a.exit.y,
+                 x + b.x + b.entry.x,
+                 y + b.y + b.entry.y
+             );
+         }
+     }
+
+     if (box.type === "alt") {
+         var order = -1;
+         box.children.forEach(c =&gt; {
+             drawIntegralCurve(parent,
+                 x + box.entry.x, y + box.entry.y,
+                 x + c.x + c.entry.x, y + c.y + c.entry.y,
+                 "alt",
+                 {
+                     uid: box.ast.uid,
+                     order: order++,
+                     astid: box.ast.astid
+                 }
+             );
+             drawIntegralCurveAfter(parent,
+                 x + c.x + c.exit.x, y + c.y + c.exit.y,
+                 x + box.exit.x, y + box.exit.y,
+                 "alt",
+             );
+         });
+     }
+
+     if (box.type === "repeat") {
+         const c = box.children[0];
+         drawLine(parent,
+             x + box.entry.x, y + box.entry.y,
+             x + c.x + c.entry.x, y + c.y + c.entry.y
+         );
+     }
+
+     if (box.type === "constructure") {
+         const c = box.children[0];
+         const beginstr = box.ast.pattern[0] == '?' ? `(${box.ast.pattern}` : "(";
+         drawLine(parent,
+             x + box.entry.x + MeasureText.getInstance().getWidth(beginstr) + 6, y + box.entry.y,
+             x + c.x + c.entry.x, y + c.y + c.entry.y
+         );
+         drawLine(parent,
+             x + c.x + c.exit.x, y + c.y + c.exit.y,
+             x + box.exit.x - 5 - 5.5, y + box.exit.y
+         );
+     }
+
+     if (box.type === "condition") {
+         drawLine(parent,
+             x, y + box.entry.y,
+             x + 10, y + box.entry.y
+         );
+     }
+ }
+
+ // 新增：绘制开始节点（绿色实心圆）
+ function drawStartNode(parent, box, x, y) {
+     const g = svgEl("g", { transform: `translate(${x},${y})` });
+
+     // 绘制实心圆
+     const circle = svgEl("circle", {
+         cx: box.width / 2,
+         cy: box.height / 2,
+         r: box.width / 2,
+         class: "start-node"
+     });
+     g.appendChild(circle);
+
+     // 添加"S"文本
+     const text = svgEl("text", {
+         x: box.width / 2,
+         y: box.height / 2,
+         class: "text",
+         fill: "black",
+         "font-weight": "bold",
+         "font-size": "12px"
+     });
+     text.textContent = "S";
+     g.appendChild(text);
+
+     parent.appendChild(g);
+ }
+
+ // 新增：绘制结束节点（红色实心圆）
+ function drawEndNode(parent, box, x, y) {
+     const g = svgEl("g", { transform: `translate(${x},${y})` });
+
+     // 绘制实心圆
+     const circle = svgEl("circle", {
+         cx: box.width / 2,
+         cy: box.height / 2,
+         r: box.width / 2,
+         class: "end-node"
+     });
+     g.appendChild(circle);
+
+     // 添加"E"文本
+     const text = svgEl("text", {
+         x: box.width / 2,
+         y: box.height / 2,
+         class: "text",
+         fill: "black",
+         "font-weight": "bold",
+         "font-size": "12px"
+     });
+     text.textContent = "E";
+     g.appendChild(text);
+
+     parent.appendChild(g);
+ }
+
+ // ========== 修改核心代码：condition 绘制函数，支持c2和c3各自居中 ==========
+ function drawConditionBox(parent, box, x, y) {
+     // 绘制条件判断区域的外框
+     drawPath(parent, `
+           M ${(x + box.width)} ${y + box.height / 2}
+           V ${y + box.height}
+           H ${x}
+           V ${y}
+           H ${(x + box.width)}
+           V ${box.height / 2 - 12 + y}
+         `, "condition-line rectArea",
+         {
+             uid: box.ast.uid,
+             astid: box.ast.astid
+         }
+     );
+
+     const [condNode, c2Node, c3Node] = box.children;
+
+     // 计算分支区的起始X坐标
+     const branchAreaStartX = x + condNode.x + condNode.width + 30; // gap=30
+
+     // 1. 条件块 出口 → c2(yes) 入口 ：平滑曲线连接
+     drawIntegralCurve(parent,
+         x + condNode.x + condNode.exit.x + box.c1After.width, y + condNode.y + condNode.exit.y,
+         x + c2Node.x + c2Node.entry.x, y + c2Node.y + c2Node.entry.y,
+         "green"
+     );
+
+     // 2. 条件块 出口 → c3(no) 入口 ：平滑曲线连接
+     drawIntegralCurve(parent,
+         x + condNode.x + condNode.exit.x + box.c1After.width, y + condNode.y + condNode.exit.y,
+         x + c3Node.x + c3Node.entry.x, y + c3Node.y + c3Node.entry.y,
+         "red"
+     );
+
+     // 3. c2 出口 → condition总出口 ：平滑曲线连接
+     drawIntegralCurveAfter(parent,
+         x + c2Node.x + c2Node.exit.x, y + c2Node.y + c2Node.exit.y,
+         x + box.exit.x, y + box.exit.y,
+         "green"
+     );
+
+     // 4. c3 出口 → condition总出口 ：平滑曲线连接
+     drawIntegralCurveAfter(parent,
+         x + c3Node.x + c3Node.exit.x, y + c3Node.y + c3Node.exit.y,
+         x + box.exit.x, y + box.exit.y,
+         "red"
+     );
+
+     /*绘制菱形*/
+     var aPoint = { x: x + box.c1Before.x, y: y + box.height / 2 };
+     var cPoint = { x: aPoint.x + box.c1Before.width, y: y + box.height / 2 };
+     /*
+     这里要绘制菱形
+     */
+     drawRhombusWithText(parent, aPoint, cPoint, box.c1Before.height, box.c1Before.text); // 24是菱形高度
+
+     aPoint = { x: x + box.c1After.x, y: y + box.height / 2 };
+     cPoint = { x: aPoint.x + box.c1After.width, y: y + box.height / 2 };
+     /*
+     这里要绘制菱形
+     */
+     drawRhombusWithText(parent, aPoint, cPoint, box.c1After.height, box.c1After.text); // 24是菱形高度
+
+     // 5. 绘制条件节点的蓝色说明文本
+     /*const descText = box.ast.group ? `组${box.ast.group}判断` : "条件匹配";
+     const t1 = svgEl("text", {x: x + box.width/2, y: y -5, class: "desc", fill:"blue"});
+     t1.textContent = descText;
+     parent.appendChild(t1);*/
+
+     // 6. 可选：绘制分支区域的分隔线，用于可视化调试
+     // 绘制分支区域边界（虚线，用于调试）
+     const debugBorder = svgEl("path", {
+         d: `M ${branchAreaStartX + box.c1After.width} ${y} V ${y + box.height}`,
+         stroke: "#ccc",
+         "stroke-width": 1,
+         "stroke-dasharray": "3,3",
+         fill: "none"
+     });
+     parent.appendChild(debugBorder);
+
+     // 添加分支标签
+     const yesLabel = svgEl("text", {
+         x: branchAreaStartX - 15 + box.c1After.width,
+         y: y + c2Node.y + c2Node.height / 2,
+         class: "desc",
+         fill: "green",
+         "text-anchor": "end"
+     });
+     yesLabel.textContent = msg["YES"];
+     parent.appendChild(yesLabel);
+
+     const noLabel = svgEl("text", {
+         x: branchAreaStartX - 15 + box.c1After.width,
+         y: y + c3Node.y + c3Node.height / 2,
+         class: "desc",
+         fill: "red",
+         "text-anchor": "end"
+     });
+     noLabel.textContent = msg["NO"];
+     parent.appendChild(noLabel);
+ }
+
+ // 新增函数：绘制带有文字的菱形
+ function drawRhombusWithText(parent, leftPoint, rightPoint, height, text) {
+     // 计算菱形的四个顶点
+     const midX = (leftPoint.x + rightPoint.x) / 2;
+     const midY = (leftPoint.y + rightPoint.y) / 2;
+     const topPoint = { x: midX, y: midY - height / 2 };
+     const bottomPoint = { x: midX, y: midY + height / 2 };
+
+     // 创建组元素
+     const g = svgEl("g", {
+         transform: `translate(0, 0)`,
+         class: "rhombus-group"
+     });
+
+     // 1. 绘制菱形
+     const rhombus = svgEl("polygon", {
+         points: `${leftPoint.x},${leftPoint.y} ${topPoint.x},${topPoint.y} ${rightPoint.x},${rightPoint.y} ${bottomPoint.x},${bottomPoint.y}`,
+         fill: "white",
+         stroke: "blue",
+         "stroke-width": "2",
+         //"stroke-dasharray": "6,3",
+         //class: "condition-line"
+     });
+     g.appendChild(rhombus);
+
+     // 2. 绘制文字（居中显示）
+     const textElement = svgEl("text", {
+         x: midX,
+         y: midY,
+         "text-anchor": "middle",
+         "dominant-baseline": "middle",
+         "font-size": "12px",
+         "font-weight": "normal",
+         fill: "blue",
+         class: "rhombus-text"
+     });
+     textElement.textContent = text;
+     g.appendChild(textElement);
+
+     parent.appendChild(g);
+ }
+
+
+ function drawSingle(parent, box, x, y) {
+     if (alwayshiddenComment &amp;&amp; box.ast.IsComment) {
+         return;
+     }
+     var text = box.ast.text;
+     if (alwayshiddenInvalidspace &amp;&amp; box.ast.NeedhiddenInvalidspace) {
+         text = box.ast.text.replace(/([ \t\r\n\f]+)/g, "");
+         if (text.length == 0) return;
+     }
+
+     const g = svgEl("g", { transform: `translate(${x},${y})` });
+     g.appendChild(svgEl("rect", {
+         width: box.width, height: box.height - 5, rx: 6, ry: 6,
+         class: "box rectArea",
+         uid: box.ast.uid,
+         order: box.ast.order,
+         astid: box.ast.astid
+     }));
+     const t = svgEl("text", {
+         x: box.width / 2,
+         y: box.height / 2 - 1,
+         class: box.ast.text == "" ? "text empty content" : "text content",
+         uid: box.ast.uid,
+         astid: box.ast.astid
+     });
+     t.textContent = box.ast.text == "" ? msg["Empty"] : text.replaceWhiteSpace();
+     if (text.startsWith("[") &amp;&amp; text.endsWith("]")) {
+      t.innerHTML = text.CreateCharGroupHtml();
+  }
+     g.appendChild(t);
+
+     if (box.ast.desc != "") {
+         const t1 = svgEl("text", {
+             x: box.width / 2,
+             y: box.height+3/* / 2 + 22.5*/,
+             class: "desc",
+             fill: "blue",
+             astid: box.ast.astid
+         });
+         t1.textContent = box.ast.desc;
+         g.appendChild(t1);
+     }
+
+     parent.appendChild(g);
+ }
+
+ function drawRepeatBox(parent, box, x, y) {
+     const c = box.children[0];
+     const g = svgEl("g", { transform: `translate(${x},${y})` });
+     const isLazy = box.ast.kind.length &gt; 1 &amp;&amp; box.ast.kind.endsWith('?');
+     const pad = 12;
+
+     const t = svgEl("text", {
+         x: box.width - 10 - (box.ast.kind.length * 8 + pad * 2) / 2,
+         y: box.height / 2,
+         class: "label quantifierRect matchTime",
+         uid: box.ast.uid,
+         astid: box.ast.astid,
+         kind: box.ast.kind
+     });
+
+     const t1 = svgEl("text", {
+         x: box.width / 2,
+         y: -0,
+         class: "desc",
+         fill: "blue"
+     });
+     //t1.textContent = box.ast.kind;
+     t1.textContent = box.ast.desc;
+     g.appendChild(t1);
+
+     drawPath(parent, `
+           M ${(x + box.width - 10 + x + box.width - 10 - (box.ast.kind.length * 8 + pad * 2)) / 2} ${box.height / 2 + 12 + y}
+           V ${y + box.height}
+           H ${x}
+           V ${y + 6}
+           H ${(x + box.width - 10 + x + box.width - 10 - (box.ast.kind.length * 8 + pad * 2)) / 2}
+           V ${box.height / 2 - 12 + y}
+         `, isLazy ? "lazy-line quantifierOutRect rectArea" : "line quantifierOutRect rectArea",
+         {
+             uid: box.ast.uid,
+             order: box.ast.order,
+             astid: box.ast.astid
+         }
+     );
+
+     //绘制小框
+     drawPath(parent, `
+           M ${x + box.width - 10} ${box.height / 2 - 12 + y}
+           V ${box.height / 2 + 12 + y}
+           H ${x + box.width - 10 - (box.ast.kind.length * 8 + pad * 2)}
+           V ${box.height / 2 - 12 + y}
+           H ${x + box.width - 10 + 1}
+         `, isLazy ? "quantifierRect lazy-line" : "quantifierRect line",
+         {
+             astid: box.ast.astid
+         }
+     );
+
+     drawLine(parent,
+         x + c.x + c.exit.x, y + c.y + c.exit.y,
+         x + box.width - 10 - (box.ast.kind.length * 8 + pad * 2), y + box.exit.y
+     );
+     drawLine(parent,
+         x + box.width - 10, y + c.y + c.exit.y,
+         x + box.exit.x, y + box.exit.y
+     );
+     t.textContent = box.ast.kind;
+     g.appendChild(t);
+     parent.appendChild(g);
+ }
+
+ function drawconstructureBox(parent, box, x, y) {
+     var notCapture = box.ast.GroupingNumber == undefined &amp;&amp; box.ast.CaptureGroup2rdName == undefined;
+
+     const g = svgEl("g", { transform: `translate(${x},${y})` });
+     const pad = 12;
+     const beginstr = box.ast.pattern.length == 1 ? box.ast.pattern : `(${box.ast.pattern}`;
+     const endstr = ')';
+     const rectHeight = 30;
+     const textY = rectHeight / 2;
+
+     // 开始文本+矩形
+     let startTextWidth = beginstr.length * 8 + 3;
+     startTextWidth = MeasureText.getInstance().getWidth(beginstr) + 6;
+     const startRectX = 0;
+     const startRect = svgEl("rect", {
+         width: startTextWidth,
+         height: rectHeight,
+         x: startRectX,
+         y: box.height / 2 - rectHeight / 2,
+         rx: 3, ry: 3, class: "box colorful BracketRect leftBracket",
+         astid: box.ast.astid
+     });
+     g.appendChild(startRect);
+     const tstart = svgEl("text", {
+         x: startRectX + startTextWidth / 2,
+         y: box.height / 2 - rectHeight / 2 + textY,
+         class: "text BracketRect leftBracket",
+         uid: box.ast.uid,
+         order: box.ast.order,
+         astid: box.ast.astid
+     });
+     tstart.textContent = beginstr;
+     g.appendChild(tstart);
+
+     // 结束文本+矩形
+     const endTextWidth = 1 * 8 + 3;
+     const endRectX = box.width - endTextWidth;
+     const endRect = svgEl("rect", {
+         width: endTextWidth,
+         height: rectHeight,
+         x: endRectX,
+         y: box.height / 2 - rectHeight / 2,
+         rx: 3, ry: 3, class: "box colorful BracketRect rightBracket",
+         astid: box.ast.astid
+     });
+     g.appendChild(endRect);
+     const tend = svgEl("text", {
+         x: endRectX + endTextWidth / 2,
+         y: box.height / 2 - rectHeight / 2 + textY,
+         class: "text BracketRect rightBracket",
+         uid: box.ast.uid,
+         order: box.ast.order,
+         astid: box.ast.astid
+     });
+     tend.textContent = endstr;
+     g.appendChild(tend);
+
+     if (box.ast.desc != "") {
+         const t1 = svgEl("text", {
+             x: box.width / 2,
+             y: -0,
+             class: "desc",
+             fill: "blue"
+         });
+         t1.textContent = box.ast.desc;
+         g.appendChild(t1);
+     }
+
+     drawPath(parent, `
+           M ${(x + box.width - 5.5)} ${y + 6}
+           V ${y + box.height}
+           H ${x + beginstr.length * 8 / 2}
+           V ${y + 6}
+           H ${x + box.width - 4.5}
+           V ${y + 6}
+         `, `line colorful${notCapture ? " dottedline" : ""} rectArea`,
+         {
+             uid: box.ast.uid,
+             order: box.ast.order,
+             astid: box.ast.astid
+         }
+     );
+     parent.appendChild(g);
+ }
+
+ function drawLine(parent, x1, y1, x2, y2, className = "", attrs = {}) {
+     parent.appendChild(svgEl("path", {
+         d: `M ${x1} ${y1} L ${x2} ${y2}`,
+         class: `line${(className == "" ? "" : ` ${className}`)}`,
+         ...attrs
+     }));
+ }
+
+ function drawPath(parent, d, className = "line", attrs = {}) {
+     parent.appendChild(svgEl("path", { d, class: className, ...attrs }));
+ }
+
+ function Init(ast) {
+     var newAst = ast;
+     if (newAst.type == "constructure") {
+         if (newAst.GroupingNumber != undefined)
+             newAst.desc = `${msg["Group"]}${newAst.GroupingNumber}`;
+         else if (/^\?['&lt;][^-'&gt;]+[^'&gt;]+[^&gt;]/g.test(newAst.pattern)) {
+             var groupnametmp = newAst.pattern.match(/(?&lt;=^\?(&lt;|'))([0-9]+|(?![0-9]+)(\w|[^\x00-\xff])+)(?=-|'|&gt;)/g)[0];
+             if (/^\d+/g.test(groupnametmp))
+                 newAst.desc = `${msg["Group"]}${groupnametmp}`;
+             else newAst.desc = `${msg["Group"]}${newAst.CaptureGroup2rdName}`;
+         }
+         else if (/^\?[+\-IMNSXimnsx]+/g.test(newAst.pattern)) {
+
+         }
+         else newAst.desc = GetConstructionDesc(newAst.pattern);
+
+         Init(newAst.child);
+     }
+     else if (newAst.type == "repeat") {
+         var min = '0', max = '∞';
+         if (newAst.kind[0] == '{') {
+             var nums = newAst.kind.match(/\d+/g);
+             min = nums[0];
+             max = min;
+             if (nums.length &gt; 1) max = nums[1];
+         }
+         else {
+             const quanMinMap = { '*': '0', '?': '0', '+': '1' };
+             if (quanMinMap.hasOwnProperty(newAst.kind[0])) min = quanMinMap[newAst.kind[0]];
+             if (newAst.kind[0] == '?') max = '1';
+         }
+
+         if (newAst.kind.length &gt; 1 &amp;&amp; newAst.kind[newAst.kind.length - 1] == '?') {
+             //lazy Quantifier
+         }
+         if (max != min)
+             newAst.desc = `${msg["repeat"]} ${min} ${msg["to"]} ${max} ${msg["times"]}`;
+         else newAst.desc = `${msg["repeat"]} ${min} ${msg["times"]}`;
+
+         Init(newAst.child);
+     }
+     else if (newAst.type == "alt" || newAst.type == "sequence") {
+         //newAst.children.forEach(f=&gt;Init(f));
+         for (var i = 0; i &lt; newAst.children.length; i++)
+             Init(newAst.children[i]);
+     }
+     else if (newAst.type == "single") {
+         if (newAst.text.match(/^\\\d+$/g) != null || newAst.text.match(/\\k(&lt;|')(\w|[^\x00-\xff])+(&gt;|')/g) != null) {
+             var groupname = newAst.text.match(/(\d+$)|([^&lt;'\\]+(?=(&gt;|')$))/g)[0];
+             if (newAst.IsReference == null || newAst.IsReference)
+                 newAst.desc = `${msg["backreference#"]}${groupname}`;
+             else if (!newAst.IsReference) {
+                 var asciiIndex = Number("0o" + groupname) % 256;
+                 var referChar = String.fromCharCode(asciiIndex).replaceAll(" ", `&amp;nbsp;(${msg.space})`);
+                 newAst.desc = referChar;
+             }
+         }
+         else if (newAst.text.startsWith("\\u") || newAst.text.startsWith("\\x")) {
+             var hexString = "0x" + newAst.text.substring(2);
+             let decimalNumber = parseInt(hexString, 16); // 第二个参数16指定了基数为16
+             var pointerChar = String.fromCharCode(decimalNumber);
+             newAst.desc = pointerChar;
+         }
+         else if (new RegexBaseCharacter().getExplanation(newAst.text) != "") {
+             newAst.desc = new RegexBaseCharacter().getExplanation(newAst.text);
+         }
+         else if (/^\(\?[+\-imnsxISMNX]+\)$/g.test(newAst.text))
+             newAst.desc = msg["Inline Regex Options"];
+         else if (newAst.text.match(/^\(\?#[^)]*\)$/g)) {
+             newAst.desc = msg["Inline Comment"];
+             newAst.IsComment = true;
+         }
+         else if (newAst.EndofLineComment == 1) {
+             newAst.desc = msg["End-of-line Comment"];
+             newAst.IsComment = true;
+         }
+     }
+     else if (newAst.type == "condition") {
+         if (newAst.c1 != null) Init(newAst.c1);
+         Init(newAst.c2);
+         Init(newAst.c3);
+     }
+ }
+
+ function InitAfter() {
+     document.querySelectorAll('.quantifierRect').forEach(element =&gt; {
+         element.addEventListener('mouseenter', () =&gt; {
+             var ele = element.previousElementSibling;
+             if (element.tagName == 'text') {
+                 ele = element.parentElement.previousElementSibling;
+                 while (!ele.classList.contains("quantifierRect")) {
+                     ele = ele.previousElementSibling;
+                 }
+                 ele = ele.previousElementSibling;
+             }
+             if (ele.tagName != 'path') {
+                 throw 'svg结构错误';
+             }
+             ele.style.backgroundColor = '#ffeb3b';
+             ele.style.border = "1px solid orange";
+             ele.classList.add("mtEffectArea")
+         });
+         element.addEventListener('mouseleave', () =&gt; {
+             Array.from(document.getElementsByClassName('mtEffectArea')).forEach(el =&gt; {
+                 el.removeAttribute("style");
+                 el.classList.remove("mtEffectArea");
+             });
+         });
+     });
+
+     document.querySelectorAll('.BracketRect').forEach(element =&gt; {
+         element.addEventListener('mouseenter', () =&gt; {
+             var ele = element.parentElement.previousElementSibling;
+             if (ele.tagName != 'path') {
+                 throw 'svg结构错误';
+             }
+             ele.style.backgroundColor = '#ffeb3b';
+             ele.style.border = "1px solid orange";
+             ele.classList.add("mtEffectArea")
+         });
+         element.addEventListener('mouseleave', () =&gt; {
+             Array.from(document.getElementsByClassName('mtEffectArea')).forEach(el =&gt; {
+                 el.removeAttribute("style");
+                 el.classList.remove("mtEffectArea");
+             });
+         });
+     });
+
+ }
+
+ // 修改AST：在sequence的开始和结束位置添加开始和结束节点
+ // 创建一个更复杂的condition示例来展示宽度不一致的情况
+ var ast = {};
+
+ var descMap = new Map();
+ /*descMap.set("\\d","数字");
+ descMap.set("\\w","文字");
+ descMap.set("\\s","空白字符");
+ descMap.set("^","输入开头");
+ descMap.set("$","输入结尾");*/
+ descMap.set("?&gt;", "Atomic Group, NonBacktracking");
+ descMap.set("?=", "followed by:");
+ descMap.set("?!", "not followed by:");
+ descMap.set("?&lt;=", "before is:");
+ descMap.set("?&lt;!", "before is not:");
+ descMap.set("?:", "Non-Capture");
+
+ function GetConstructionDesc(pattern) {
+     if (descMap.has(pattern)) return msg[descMap.get(pattern)];
+ }
+
+ String.prototype.replaceWhiteSpace = function () {
+     return this.replaceAll(' ', '␣').replaceAll('\t', '⇥').replaceAll('\v', '␋').replaceAll('\n', '↵').replaceAll('\r', '␍').replaceAll('\f', '␌').replaceAll('\u00A0', '⍽').replaceAll('\u202F', '⍽').replaceAll('\u200B', '⚬').replaceAll('\uFEFF', '⚬');
+ }
+
+ var RegexBaseCharacter = function () {
+     var map = new Map();
+     map.set("\\d", "decimal digit");
+     map.set("\\w", "word");
+     map.set("\\s", "whitespace");
+     map.set("\\D", "non-digit");
+     map.set("\\W", "non-word");
+     map.set("\\S", "non-whitespace");
+     map.set("\\b", "word boundary");
+     map.set("\\B", "non-word boundary");
+     map.set("^", "input start");
+     map.set("$", "input end");
+     map.set("\\G", "last match end");
+
+     map.set("\\p{Lu}", "Letter, Uppercase");
+     map.set("\\P{Lu}", "Non: Letter, Uppercase");
+     map.set("\\p{Ll}", "Letter, Lowercase");
+     map.set("\\P{Ll}", "Non: Letter, Lowercase");
+     map.set("\\p{Lt}", "Letter, Titlecase");
+     map.set("\\P{Lt}", "Non: Letter, Titlecase");
+     map.set("\\p{Lm}", "Letter, Modifier");
+     map.set("\\P{Lm}", "Non: Letter, Modifier");
+     map.set("\\p{Lo}", "Letter, Other");
+     map.set("\\P{Lo}", "Non: Letter, Other");
+     map.set("\\p{L}", "All letter characters");
+     map.set("\\P{L}", "Non: All letter characters");
+     map.set("\\p{Mn}", "Mark, Nonspacing");
+     map.set("\\P{Mn}", "Non: Mark, Nonspacing");
+     map.set("\\p{Mc}", "Mark, Spacing Combining");
+     map.set("\\P{Mc}", "Non: Mark, Spacing Combining");
+     map.set("\\p{Me}", "Mark, Enclosing");
+     map.set("\\P{Me}", "Non: Mark, Enclosing");
+     map.set("\\p{M}", "All combining marks");
+     map.set("\\P{M}", "Non: All combining marks");
+     map.set("\\p{Nd}", "Number, Decimal Digit");
+     map.set("\\P{Nd}", "Non: Number, Decimal Digit");
+     map.set("\\p{Nl}", "Number, Letter");
+     map.set("\\P{Nl}", "Non: Number, Letter");
+     map.set("\\p{No}", "Number, Other");
+     map.set("\\P{No}", "Non: Number, Other");
+     map.set("\\p{N}", "All numbers");
+     map.set("\\P{N}", "Non: All numbers");
+     map.set("\\p{Pc}", "Punctuation, Connector");
+     map.set("\\P{Pc}", "Non: Punctuation, Connector");
+     map.set("\\p{Pd}", "Punctuation, Dash");
+     map.set("\\P{Pd}", "Non: Punctuation, Dash");
+     map.set("\\p{Ps}", "Punctuation, Open");
+     map.set("\\P{Ps}", "Non: Punctuation, Open");
+     map.set("\\p{Pe}", "Punctuation, Close");
+     map.set("\\P{Pe}", "Non: Punctuation, Close");
+     map.set("\\p{Pi}", "Punctuation, Initial quote");
+     map.set("\\P{Pi}", "Non: Punctuation, Initial quote");
+     map.set("\\p{Pf}", "Punctuation, Final quote");
+     map.set("\\P{Pf}", "Non: Punctuation, Final quote");
+     map.set("\\p{Po}", "Punctuation, Other");
+     map.set("\\P{Po}", "Non: Punctuation, Other");
+     map.set("\\p{P}", "All punctuation characters");
+     map.set("\\P{P}", "Non: All punctuation characters");
+     map.set("\\p{Sm}", "Symbol, Math");
+     map.set("\\P{Sm}", "Non: Symbol, Math");
+     map.set("\\p{Sc}", "Symbol, Currency");
+     map.set("\\P{Sc}", "Non: Symbol, Currency");
+     map.set("\\p{Sk}", "Symbol, Modifier");
+     map.set("\\P{Sk}", "Non: Symbol, Modifier");
+     map.set("\\p{So}", "Symbol, Other");
+     map.set("\\P{So}", "Non: Symbol, Other");
+     map.set("\\p{S}", "All symbols");
+     map.set("\\P{S}", "Non: All symbols");
+     map.set("\\p{Zs}", "Separator, Space");
+     map.set("\\P{Zs}", "Non: Separator, Space");
+     map.set("\\p{Zl}", "Separator, Line");
+     map.set("\\P{Zl}", "Non: Separator, Line");
+     map.set("\\p{Zp}", "Separator, Paragraph");
+     map.set("\\P{Zp}", "Non: Separator, Paragraph");
+     map.set("\\p{Z}", "All separator characters");
+     map.set("\\P{Z}", "Non: All separator characters");
+     map.set("\\p{Cc}", "Other, Control");
+     map.set("\\P{Cc}", "Non: Other, Control");
+     map.set("\\p{Cf}", "Other, Format");
+     map.set("\\P{Cf}", "Non: Other, Format");
+     map.set("\\p{Cs}", "Other, Surrogate");
+     map.set("\\P{Cs}", "Non: Other, Surrogate");
+     map.set("\\p{Co}", "Other, Private Use");
+     map.set("\\P{Co}", "Non: Other, Private Use");
+     map.set("\\p{Cn}", "Other, Not Assigned or Noncharacter");
+     map.set("\\P{Cn}", "Non: Other, Not Assigned or Noncharacter");
+     map.set("\\p{C}", "All other characters");
+     map.set("\\P{C}", "Non: All other characters");
+
+     this.getExplanation = function (pattern) {
+         if (map.has(pattern))
+             return msg[map.get(pattern)];
+         else return "";
+     }
+ }
+
+ function DrawRailroad() {
+  document.getElementById("regex-original").textContent = regex;
+
+     astCount = 0;//正则单元计数
+     new Lang().setLang(currentLang);
+     document.getElementById("railroad-diagram").innerHTML = "";
+
+     //ast = UnitMapToRailRoad(json);
+     ast = json;
+     Init(ast);
+     newUnit = {
+         type: "sequence",
+         children: [
+             { type: "start", text: "start" },
+             ast,
+             { type: "end", text: "end" }
+         ]
+     };
+     const svg = renderSvg(layout(newUnit));
+     document.getElementById("railroad-diagram").appendChild(svg);
+     InitAfter();
+     //InitRailroadEvent();
+ }
+
+ document.addEventListener('DOMContentLoaded', () =&gt; {DrawRailroad()});
+
+ // 创建新的AST，在开始和结束位置添加节点
+ /*
+ document.addEventListener('DOMContentLoaded', () =&gt; {
+     DrawRailroad();
+ });*/
+
+ // ========== 新增：保存图片功能 ==========
+ document.addEventListener('DOMContentLoaded', () =&gt; {
+     document.getElementById('save-png').addEventListener('click', saveAsPNG);
+     document.getElementById('save-svg').addEventListener('click', saveAsSVG);
+ });
+
+ // 保存为PNG图片
+ function saveAsPNG() {
+     const svgElement = document.querySelector('#railroad-diagram svg');
+
+     // 克隆SVG以便操作
+     const clonedSvg = svgElement.cloneNode(true);
+
+     // 添加样式定义到克隆的SVG中
+     const style = document.createElement('style');
+     style.textContent = `
+         .box { fill: #fff; stroke: #333; stroke-width: 2; }
+         .highlight-box { fill: yellow; stroke: #333; stroke-width: 2; }
+         .text { font-size: 14px; text-anchor: middle; dominant-baseline: middle; }
+         .desc { font-size: 10px; text-anchor: middle; dominant-baseline: middle; }
+         .line { stroke: #333; stroke-width: 2; fill: none; }
+         .control { fill: none; stroke: #666; stroke-width: 2; stroke-dasharray: 6,4; }
+         .lazy-line { stroke: #333; stroke-width: 2; fill: none; stroke-dasharray: 6,3; }
+         .label { font-size: 12px; text-anchor: middle; dominant-baseline: middle; }
+         .line.green { stroke: green !important; }
+         .line.red { stroke: red !important; }
+         .line.colorful { stroke: url(#colorCycle) !important; fill: none; }
+         .condition-line { stroke: purple; stroke-width: 2; fill: none; fill: #ff00ff2f; stroke-dasharray: 6,3; }
+         .start-node { fill: #4CAF50; stroke: #333; stroke-width: 1; }
+         .end-node { fill: #F44336; stroke: #333; stroke-width: 1; }
+         .box.colorful { stroke: lightgrey; }
+         .text.empty{fill:#d3d3d3}.mtEffectArea{fill:gold!important}.BracketRect,.quantifierRect{pointer-events:all}
+         .quantifierRect.line{fill:#fff9e6;stroke:#ff9800}.quantifierRect.lazy-line{fill:#e6f7ff;stroke:#2196f3}.quantifierOutRect.line{stroke:#ff9800}
+         .quantifierOutRect.lazy-line{stroke:#2196f3}
+       `;
+
+     // 确保defs存在
+     let defs = clonedSvg.querySelector('defs');
+     if (!defs) {
+         defs = document.createElementNS(SVG_NS, 'defs');
+         clonedSvg.insertBefore(defs, clonedSvg.firstChild);
+     }
+
+     // 添加彩虹渐变定义
+     const gradientDef = `
+         &lt;linearGradient id="colorCycle" x1="0%" y1="0%" x2="100%" y2="0%"&gt;
+           &lt;stop offset="0%" stop-color="#ff0000" /&gt;
+           &lt;stop offset="14%" stop-color="#ff9900" /&gt;
+           &lt;stop offset="28%" stop-color="#ffff00" /&gt;
+           &lt;stop offset="42%" stop-color="#00ff00" /&gt;
+           &lt;stop offset="56%" stop-color="#00ffff" /&gt;
+           &lt;stop offset="70%" stop-color="#0000ff" /&gt;
+           &lt;stop offset="84%" stop-color="#9900ff" /&gt;
+           &lt;stop offset="100%" stop-color="#ff0000" /&gt;
+         &lt;/linearGradient&gt;
+       `;
+     defs.innerHTML += gradientDef;
+     defs.appendChild(style);
+
+     // 设置内联样式以确保在图片中正确显示
+     const allElements = clonedSvg.querySelectorAll('*');
+     allElements.forEach(el =&gt; {
+         const computedStyle = window.getComputedStyle(el);
+         const styles = {};
+
+         // 只复制必要的样式属性
+         const styleProps = [
+             'fill', 'stroke', 'stroke-width', 'stroke-dasharray',
+             'font-size', 'text-anchor', 'dominant-baseline',
+             'font-weight', 'font-family'
+         ];
+
+         styleProps.forEach(prop =&gt; {
+             const value = computedStyle.getPropertyValue(prop);
+             if (value &amp;&amp; value !== 'none') {
+                 el.style[prop] = value;
+             }
+         });
+     });
+
+     // 序列化SVG
+     const serializer = new XMLSerializer();
+     const svgString = serializer.serializeToString(clonedSvg);
+
+     // 创建Blob URL
+     const blob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
+     const url = URL.createObjectURL(blob);
+
+     // 创建Image对象加载SVG
+     const img = new Image();
+     img.onload = function () {
+         // 创建Canvas
+         const canvas = document.createElement('canvas');
+         canvas.width = clonedSvg.width.baseVal.value;
+         canvas.height = clonedSvg.height.baseVal.value;
+         const ctx = canvas.getContext('2d');
+
+         // 绘制白色背景
+         ctx.fillStyle = 'white';
+         ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+         // 绘制SVG到Canvas
+         ctx.drawImage(img, 0, 0);
+
+         // 创建下载链接
+         const pngUrl = canvas.toDataURL('image/png');
+         const downloadLink = document.createElement('a');
+         downloadLink.href = pngUrl;
+         downloadLink.download = 'regex-diagram.png';
+         document.body.appendChild(downloadLink);
+         downloadLink.click();
+         document.body.removeChild(downloadLink);
+
+         // 清理URL
+         URL.revokeObjectURL(url);
+     };
+
+     img.src = url;
+ }
+
+ // 保存为SVG文件（带样式）
+ function saveAsSVG() {
+     const svgElement = document.querySelector('#railroad-diagram svg');
+
+     // 克隆SVG以便操作
+     const clonedSvg = svgElement.cloneNode(true);
+
+     // 添加样式定义到克隆的SVG中
+     const style = document.createElement('style');
+     style.textContent = `
+         .box { fill: #fff; stroke: #333; stroke-width: 2; }
+         .highlight-box { fill: yellow; stroke: #333; stroke-width: 2; }
+         .text { font-size: 14px; text-anchor: middle; dominant-baseline: middle; }
+         .desc { font-size: 10px; text-anchor: middle; dominant-baseline: middle; }
+         .line { stroke: #333; stroke-width: 2; fill: none; }
+         .control { fill: none; stroke: #666; stroke-width: 2; stroke-dasharray: 6,4; }
+         .lazy-line { stroke: #333; stroke-width: 2; fill: none; stroke-dasharray: 6,3; }
+         .label { font-size: 12px; text-anchor: middle; dominant-baseline: middle; }
+         .line.green { stroke: green !important; }
+         .line.red { stroke: red !important; }
+         .line.colorful { stroke: url(#colorCycle) !important; fill: none; }
+         .condition-line { stroke: purple; stroke-width: 2; fill: none; fill: #ff00ff2f; stroke-dasharray: 6,3; }
+         .start-node { fill: #4CAF50; stroke: #333; stroke-width: 1; }
+         .end-node { fill: #F44336; stroke: #333; stroke-width: 1; }
+         .box.colorful { stroke: lightgrey; }
+         .text.empty{fill:#d3d3d3}.mtEffectArea{fill:gold!important}.BracketRect,.quantifierRect{pointer-events:all}
+         .quantifierRect.line{fill:#fff9e6;stroke:#ff9800}.quantifierRect.lazy-line{fill:#e6f7ff;stroke:#2196f3}.quantifierOutRect.line{stroke:#ff9800}
+         .quantifierOutRect.lazy-line{stroke:#2196f3}
+       `;
+
+     // 确保defs存在
+     let defs = clonedSvg.querySelector('defs');
+     if (!defs) {
+         defs = document.createElementNS(SVG_NS, 'defs');
+         clonedSvg.insertBefore(defs, clonedSvg.firstChild);
+     }
+
+     // 添加彩虹渐变定义
+     const gradientDef = `
+         &lt;linearGradient id="colorCycle" x1="0%" y1="0%" x2="100%" y2="0%"&gt;
+           &lt;stop offset="0%" stop-color="#ff0000" /&gt;
+           &lt;stop offset="14%" stop-color="#ff9900" /&gt;
+           &lt;stop offset="28%" stop-color="#ffff00" /&gt;
+           &lt;stop offset="42%" stop-color="#00ff00" /&gt;
+           &lt;stop offset="56%" stop-color="#00ffff" /&gt;
+           &lt;stop offset="70%" stop-color="#0000ff" /&gt;
+           &lt;stop offset="84%" stop-color="#9900ff" /&gt;
+           &lt;stop offset="100%" stop-color="#ff0000" /&gt;
+         &lt;/linearGradient&gt;
+       `;
+     defs.innerHTML += gradientDef;
+     defs.appendChild(style);
+
+     // 序列化SVG
+     const serializer = new XMLSerializer();
+     const svgString = serializer.serializeToString(clonedSvg);
+
+     // 创建Blob并下载
+     const blob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
+     const url = URL.createObjectURL(blob);
+     const downloadLink = document.createElement('a');
+     downloadLink.href = url;
+     downloadLink.download = 'regex-diagram.svg';
+     document.body.appendChild(downloadLink);
+     downloadLink.click();
+     document.body.removeChild(downloadLink);
+
+     // 清理URL
+     setTimeout(() =&gt; URL.revokeObjectURL(url), 100);
+ }
+
+ // ========== 新增：缩放和拖动功能 ==========
+ class ZoomAndPan {
+     constructor(container, content) {
+         this.container = container;
+         this.content = content;
+         this.scale = 1;
+         this.posX = 0;
+         this.posY = 0;
+         this.isDragging = false;
+         this.lastX = 0;
+         this.lastY = 0;
+         this.minScale = 0.01;
+         this.maxScale = 3;
+
+         this.init();
+     }
+
+     init() {
+         // 添加鼠标事件监听
+         this.container.addEventListener('mousedown', this.onMouseDown.bind(this));
+         this.container.addEventListener('mousemove', this.onMouseMove.bind(this));
+         this.container.addEventListener('mouseup', this.onMouseUp.bind(this));
+         this.container.addEventListener('mouseleave', this.onMouseUp.bind(this));
+         this.container.addEventListener('wheel', this.onWheel.bind(this), { passive: false });
+
+         // 添加触摸事件支持
+         this.container.addEventListener('touchstart', this.onTouchStart.bind(this), { passive: false });
+         this.container.addEventListener('touchmove', this.onTouchMove.bind(this), { passive: false });
+         this.container.addEventListener('touchend', this.onTouchEnd.bind(this));
+
+         // 添加缩放按钮事件
+         document.getElementById('zoom-in').addEventListener('click', () =&gt; this.zoomIn());
+         document.getElementById('zoom-out').addEventListener('click', () =&gt; this.zoomOut());
+         document.getElementById('reset-zoom').addEventListener('click', () =&gt; this.reset());
+
+         // 初始化更新
+         this.update();
+     }
+
+     // 鼠标事件处理
+     onMouseDown(e) {
+         if (e.button !== 0) return; // 只响应左键
+         this.isDragging = true;
+         this.lastX = e.clientX;
+         this.lastY = e.clientY;
+         this.container.style.cursor = 'grabbing';
+         e.preventDefault();
+     }
+
+     onMouseMove(e) {
+         if (!this.isDragging) return;
+
+         const dx = e.clientX - this.lastX;
+         const dy = e.clientY - this.lastY;
+
+         //this.posX += dx / this.scale;
+         //this.posY += dy / this.scale;
+
+         this.posX += dx;// / this.scale;
+         this.posY += dy;// / this.scale;
+
+         this.lastX = e.clientX;
+         this.lastY = e.clientY;
+
+         this.update();
+         e.preventDefault();
+     }
+
+     onMouseUp(e) {
+         this.isDragging = false;
+         //this.container.style.cursor = 'grab';
+         this.container.style.cursor = 'default';
+     }
+
+     // 触摸事件处理
+     onTouchStart(e) {
+         if (e.touches.length === 1) {
+             this.isDragging = true;
+             this.lastX = e.touches[0].clientX;
+             this.lastY = e.touches[0].clientY;
+             e.preventDefault();
+         } else if (e.touches.length === 2) {
+             // 双指缩放
+             this.isDragging = false;
+             const touch1 = e.touches[0];
+             const touch2 = e.touches[1];
+             this.lastTouchDistance = Math.hypot(
+                 touch2.clientX - touch1.clientX,
+                 touch2.clientY - touch1.clientY
+             );
+             e.preventDefault();
+         }
+     }
+
+     onTouchMove(e) {
+         if (e.touches.length === 1 &amp;&amp; this.isDragging) {
+             const dx = e.touches[0].clientX - this.lastX;
+             const dy = e.touches[0].clientY - this.lastY;
+
+             this.posX += dx / this.scale;
+             this.posY += dy / this.scale;
+
+             this.lastX = e.touches[0].clientX;
+             this.lastY = e.touches[0].clientY;
+
+             this.update();
+             e.preventDefault();
+         } else if (e.touches.length === 2) {
+             // 双指缩放
+             const touch1 = e.touches[0];
+             const touch2 = e.touches[1];
+             const touchDistance = Math.hypot(
+                 touch2.clientX - touch1.clientX,
+                 touch2.clientY - touch1.clientY
+             );
+
+             if (this.lastTouchDistance) {
+                 const delta = touchDistance - this.lastTouchDistance;
+                 const zoomFactor = 1 + delta * 0.01;
+                 this.scale *= zoomFactor;
+                 this.scale = Math.max(this.minScale, Math.min(this.maxScale, this.scale));
+
+                 // 以两指中点为中心缩放
+                 const centerX = (touch1.clientX + touch2.clientX) / 2;
+                 const centerY = (touch1.clientY + touch2.clientY) / 2;
+                 const rect = this.container.getBoundingClientRect();
+                 const localX = centerX - rect.left;
+                 const localY = centerY - rect.top;
+
+                 // 调整位置以保持缩放中心
+                 const scaleChange = zoomFactor - 1;
+                 this.posX -= (localX / this.scale - this.posX) * scaleChange;
+                 this.posY -= (localY / this.scale - this.posY) * scaleChange;
+
+                 this.updateZoomLevel();
+                 this.update();
+             }
+
+             this.lastTouchDistance = touchDistance;
+             e.preventDefault();
+         }
+     }
+
+     onTouchEnd(e) {
+         this.isDragging = false;
+         this.lastTouchDistance = null;
+     }
+
+     // 滚轮缩放 - 修改为与示例相同的逻辑
+     onWheel(e) {
+         e.preventDefault();
+
+         const rect = this.container.getBoundingClientRect();
+         const mouseX = e.clientX - rect.left;
+         const mouseY = e.clientY - rect.top;
+
+         // 计算鼠标在内容坐标系中的位置
+         const contentX = (mouseX - this.posX) / this.scale;
+         const contentY = (mouseY - this.posY) / this.scale;
+
+         // 根据示例的缩放逻辑
+         let delta = e.deltaY &gt; 0 ? -0.05 : 0.05;
+         if (delta &lt; 0 &amp;&amp; this.scale &lt; 0.11) delta = -0.01;
+         if (delta &gt; 0 &amp;&amp; this.scale &lt;= 0.091) delta = 0.01;
+
+         const newScale = Math.max(0.01, Math.min(3, this.scale + delta));
+
+         this.scale = newScale;
+
+         // 计算缩放后的新位置，保持鼠标下的点位置不变
+         this.posX = mouseX - contentX * newScale;
+         this.posY = mouseY - contentY * newScale;
+
+         this.updateZoomLevel();
+         this.update();
+     }
+
+     // 按钮缩放 - 修改为与示例相同的逻辑
+     zoomIn() {
+         if (this.scale &lt;= 0.091) {
+             this.scale = Math.min(this.maxScale, this.scale + 0.01);
+         } else {
+             this.scale = Math.min(this.maxScale, this.scale + 0.05);
+         }
+         this.updateZoomLevel();
+         this.update();
+     }
+
+     zoomOut() {
+         if (this.scale &lt; 0.11) {
+             this.scale = Math.max(this.minScale, this.scale - 0.01);
+         } else {
+             this.scale = Math.max(this.minScale, this.scale - 0.05);
+         }
+         this.updateZoomLevel();
+         this.update();
+     }
+
+     reset() {
+         this.scale = 1;
+         this.posX = 0;
+         this.posY = 0;
+         this.updateZoomLevel();
+         this.update();
+     }
+
+     updateZoomLevel() {
+         document.getElementById('zoom-level').textContent = `${Math.round(this.scale * 100)}%`;
+     }
+
+     update() {
+         this.content.style.transform = `translate(${this.posX}px, ${this.posY}px) scale(${this.scale})`;
+     }
+ }
+
+ // 初始化缩放和拖动功能
+ document.addEventListener('DOMContentLoaded', () =&gt; {
+     const container = document.getElementById('railroad-diagram-container');
+     const content = document.getElementById('railroad-diagram');
+     const zoomAndPan = new ZoomAndPan(container, content);
+ });
+
+ function drawIntegralCurve(parent, x1, y1, x2, y2, className = "", attrs = {}) {
+     if (Math.abs(y2 - y1) &lt; 0.1) {
+         drawLine(parent, x1, y1, x2, y2, className, attrs);
+         return;
+     }
+     var x3 = x2;
+     x2 = x1 + 5;
+     const midX = (x1 + x2) / 2;
+     const cp1x = midX;
+     const cp1y = y1;
+     const cp2x = midX;
+     const cp2y = y2;
+     const d = `M ${x1} ${y1} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${x2} ${y2} H ${x3}`;
+
+     // 提取 attrs 中的 class（如果有），并删除它
+     const attrsCopy = { ...attrs };
+     const attrsClass = attrsCopy.class || "";
+     delete attrsCopy.class;
+
+     // 合并所有的 class
+     const combinedClass = [
+         "line",
+         ...(className ? [className] : []),
+         ...(attrsClass ? [attrsClass] : [])
+     ].join(" ").trim();
+
+     // 创建最终的属性对象
+     const pathAttrs = {
+         d,
+         ...attrsCopy,  // 展开不包含 class 的 attrs
+         ...(combinedClass &amp;&amp; { class: combinedClass })  // 只有在 combinedClass 非空时才添加 class 属性
+     };
+
+     parent.appendChild(svgEl("path", pathAttrs));
+ }
+
+ function drawIntegralCurveAfter(parent, x1, y1, x2, y2, className = "") {
+     if (Math.abs(y2 - y1) &lt; 0.1) {
+         drawLine(parent, x1, y1, x2, y2);
+         return;
+     }
+     var x3 = x1;
+     x1 = x2 - 5;
+     const midX = (x1 + x2) / 2;
+     const cp1x = midX;
+     const cp1y = y1;
+     const cp2x = midX;
+     const cp2y = y2;
+     const d = `M ${x3} ${y1} H${x1} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${x2} ${y2}`;
+     parent.appendChild(svgEl("path", { d, class: "line" + (className == "" ? "" : ` ${className}`) }));
+ }
+
+
+ class MeasureText {
+     static scale = 1.36; // 全局缩放因子，根据实际需要调整
+     // 1. 静态属性缓存唯一实例（可设为不可枚举，更隐蔽）
+     static #instance = null; // 私有静态属性，外部无法直接修改，更安全
+
+     constructor(font = '14px Arial, sans-serif') {
+         // 防止外部直接 new 构造实例
+         if (MeasureText.#instance) {
+             throw new Error('该类为单例模式，请通过 MeasureText.getInstance() 获取实例');
+         }
+
+         this.canvas = document.createElement('canvas');
+         this.context = this.canvas.getContext('2d');
+         this.context.font = font;
+     }
+
+     // 2. 静态方法：提供唯一的实例获取入口
+     static getInstance(font = '14px Arial, sans-serif') {
+         // 3. 不存在实例则创建，存在则直接返回缓存
+         if (!MeasureText.#instance) {
+             MeasureText.#instance = new MeasureText(font);
+         }
+         return MeasureText.#instance;
+     }
+
+     getWidth(text) {
+         const metrics = this.context.measureText(text);
+         return metrics.width * MeasureText.scale;
+     }
+ }
+
+ var languageSelector = document.getElementById("language");
+ if (languageSelector != null) {
+  languageSelector.querySelector(`option[value="${currentLang}"]`).setAttribute("selected", "")
+  languageSelector.addEventListener('change', function () {
+   var lang = languageSelector.value;
+   new Lang().changeLang(lang);
+  });
+ }
+
+ String.prototype.CharGroupInNotIn = function () {
+     if (this == "") return [];
+     //console.log(this);
+     var index = arguments[0];//下标
+     var charHasInfo = [];
+     var IsIn = arguments[1];//当前层，是包含正字符组，还是负字符组
+     var charInfo = { start: 0, end: 0, content: "", len: 0, IsIn: IsIn };
+     var nextinput = this.substring(1, this.length - 1); index++;
+     if (nextinput[0] == "^") {
+         nextinput = nextinput.substring(1);
+         //IsIn=!IsIn;
+         charInfo.IsIn = !charInfo.IsIn;
+         index++;
+     }
+     var mh = nextinput.match(/^(\\[DdWwSsPpux]|([^\\]|\\c[A-Za-z[\\\]^_]|\\.)(-([^\]\[\\]|\\c[A-Za-z[\\\]^_]|\\.))?)(\\[DdWwSsPpux]|(?!-\[)([^\]\\]|\\c[A-Za-z[\\\]^_]|\\.)(-([^\]\[\\]|\\c[A-Za-z[\\\]^_]|\\.))?)*/);
+     charInfo.start = index; index += mh[0].length;
+     charInfo.end = index - 1;
+     charInfo.content = mh[0];
+     charInfo.len = mh[0].length;
+     charHasInfo.push(charInfo);
+
+     var childInfo = nextinput.substring(mh[0].length + 1).CharGroupInNotIn(index + 1, !IsIn);
+
+
+     return charHasInfo.concat(childInfo);
+ }
+
+ String.prototype.CreateCharGroupHtml = function () {
+     var ele = '&lt;tspan class="chargroup" style="display:inline-block;"&gt;';
+     var charHasInfo = this.CharGroupInNotIn(0, true);
+     var index = 0;
+     for (var i = 0; i &lt; charHasInfo.length; i++) {
+         var chi = charHasInfo[i];
+         var prePattern = this.substring(index, chi.start);
+         var Negativele = "";
+         if (prePattern.endsWith("^")) {
+             prePattern = this.substring(index, chi.start - 1);
+             Negativele = `&lt;tspan title="${msg["negative character group, match any character except"]}"&gt;^&lt;/tspan&gt;`
+         }
+         var e1 = '&lt;tspan&gt;' + prePattern + '&lt;/tspan&gt;';
+         index = chi.start;
+         var e2 = '&lt;tspan class="' + (chi.IsIn ? "include" : "exclude") + '" title="' + (chi.IsIn ? msg.include : msg.exclude) + '"&gt;' + chi.content + '&lt;/tspan&gt;';
+         index = chi.end + 1;
+         var e3 = "";
+
+
+         ele += e1 + Negativele + e2 + e3;
+     }
+     ele += '&lt;tspan&gt;' + this.substring(index) + '&lt;/tspan&gt;&lt;/tspan&gt;';
+     return ele;
+ }
+  &lt;/script&gt;
+
+  &lt;svg width="0" height="0"&gt;
+  &lt;!-- 第一步：定义彩虹渐变规则，id="colorCycle" 是唯一标识，可自定义 --&gt;
+  &lt;defs&gt;
+    &lt;!-- 彩虹色彩循环渐变：红→橙→黄→绿→青→蓝→紫 无缝过渡，可无限循环 --&gt;
+    &lt;linearGradient id="colorCycle" x1="0%" y1="0%" x2="100%" y2="0%"&gt;
+      &lt;stop offset="0%" stop-color="#ff0000" /&gt;   &lt;!-- 红 --&gt;
+      &lt;stop offset="14%" stop-color="#ff9900" /&gt;  &lt;!-- 橙 --&gt;
+      &lt;stop offset="28%" stop-color="#ffff00" /&gt;  &lt;!-- 黄 --&gt;
+      &lt;stop offset="42%" stop-color="#00ff00" /&gt;  &lt;!-- 绿 --&gt;
+      &lt;stop offset="56%" stop-color="#00ffff" /&gt;  &lt;!-- 青 --&gt;
+      &lt;stop offset="70%" stop-color="#0000ff" /&gt;  &lt;!-- 蓝 --&gt;
+      &lt;stop offset="84%" stop-color="#9900ff" /&gt;  &lt;!-- 紫 --&gt;
+      &lt;stop offset="100%" stop-color="#ff0000" /&gt; &lt;!-- 回到红，形成循环 --&gt;
+    &lt;/linearGradient&gt;
+  &lt;/defs&gt;
+  
+  &lt;!-- 你的积分曲线path会被js动态添加到这里 --&gt;
+&lt;/svg&gt;
+&lt;/body&gt;
+&lt;/html&gt;</value>
+  </data>
+  <data name="Lang" xml:space="preserve">
+    <value>var currentLang = localStorage.getItem("lang") || (/^(zh|en)/g.test(navigator.language) ? navigator.language.split("-")[0] : "zh");
+//new Lang().setLang(currentLang);
+var map = new Map();
+var msg = {};
+var Lang = function () {
+ this.changeLang = function (lang) {
+  this.setLang(lang);
+  DrawRailroad();
+ }
+
+ this.setLang = function (lang) {
+  currentLang = lang;
+  localStorage.setItem("lang", lang);
+  applyTranslations();
+ }
+
+ var cn =
+ {
+        "Home": "首页",
+  "Group": "组",
+  "parse": "解 析",
+  "debug": "调 试",
+  "applies to:": "适用于：",
+  "All .NET platforms": "所有.NET平台",
+  ".NET framework": ".NET5以下",
+  "Screenshot": "截图",
+  "Validation mode:": "验证模式：",
+  /**/
+  //"If group": "如果组",
+  //"captured": "有捕获",
+  //"If condition": "如果条件",
+  //"matched": "满足",
+  //"then": "则",
+  //"else": "否",
+  "backreference#": "反向引用#",
+  //"inline comment": "内联注释",
+  //"end-of-line comment": "行尾注释",
+  /** */
+  "totally ": "共",
+  " matches.": "处匹配",
+  "time taken:": "用时:",
+  "show": "显示",
+  "all matches": "所有匹配项",
+  "match": "次匹配",
+  "show matched content": "显示已匹配内容",
+  "highlight visual unit": "可视化单元高亮",
+  "highlight visual structure": "可视化结构高亮",
+  "debug area movable": "调试区可移动",
+  "show regex": "显示正则表达式",
+  /** */
+  "add unit anchor": "添加单元锚点",
+  "add structure anchor": "添加结构锚点",
+  "hide invalid spaces": "隐藏无效空格",
+  "show invalid spaces": "显示无效空格",
+  "hide comments": "隐藏注释",
+  "show comments": "显示注释",
+  "visualization separate display": "可视化独显",
+  "pattern separate display": "pattern独显",
+        "regex parse made mistakes": "正则解析出现错误",
+
+  "Too many matching steps!": "匹配步数过多！",
+  "结果不匹配提示": "正则表达式匹配推理结果与 .NET 正则引擎实际匹配结果不一致。请谨慎查看匹配过程，并仔细验证结果。\n也许是C#的正则引擎有bug，请切换验证模式。\n也许是regexdev有bug...",
+  "dotNET5以下简化原因": "正则表达式发生变化。这可能有很多原因，包括条件表达式(?(c)yesBanch|noBanch)无noBanch分支但有'|'时会简化掉'|'字符，\n'{1}'、'{1,}'、'{0,}'、'{0,1}'、'{10,10}'等量词会被简化，内联注释'(?#这是内联注释)'以及被忽略的空格会和之后的量词交换位置",
+  "所有dotNET平台简化原因": "正则表达式发生变化。这可能有很多原因，包括条件表达式(?(c)yesBanch|noBanch)无noBanch分支但有'|'时会简化掉'|'字符，.NET5及以上的条件表达式不能直接包含(?imnsx:exp)或(?imnsx)会被修正，\r'{1}'、'{1,}'、'{0,}'、'{0,1}'、'{10,10}'等量词会被简化，内联注释'(?#这是内联注释)'后的量词会移动到内联注释之前，被忽略的空格后的量词会移动到空格之前",
+
+  "ignorecase": "忽略大小写",
+  "MultilineMode": "多行模式",
+  "SinglelineMode": "单行模式",
+  "ExplicitCapture": "显式捕获(不捕获无名组)",
+  "IgnorePatternWhitespace": "忽略模式中的空白字符",
+
+  "{0}th matching": "第 {0} 次匹配",
+  "Group[{0}] captures current content once(stack push)": "组[{0}] 捕获当前内容一次（入栈）",
+  "有平衡组的命名组": "组[{1}]最后一次捕获结束位置 到 当前匹配开始位置 之间的内容捕获到组[{0}]一次(进栈)",
+  "Group[{0}] removes the most recent content(stack pop)": "组[{0}] 移除最近一次捕获的内容（出栈）",
+  "open": "开启",
+  "close": "关闭",
+  "repeat one or zero times": "重复零次或一次",
+  "repeat one or more times": "重复一次或多次",
+  "repeat zero or more times": "重复零次或多次",
+  "repeat exactly {0} times": "重复恰好 {0} 次",
+  "repeat at least {0} times": "重复至少 {0} 次",
+        "at most {0} times": "至多 {0} 次",
+  "repeat between {0} and {1} times": "重复 {0} 到 {1} 次",
+  "repeat as many times as possible": "尽可能多次重复",
+  "repeat as few times as possible": "尽可能少次重复",
+  "negative character group, match any character except": "负字符组，匹配当前字符集以外的字符",
+  "include": "包含",
+  "exclude": "排除",
+
+  "space": "空格",
+  //"backreference group#": "反向引用组",
+  "from now {0}, press [imnsx] key to view the scope": "从现在起{0}，按下[imnsx]键以查看作用域",
+
+  "same as output of .NET regex engine": "与.NET正则引擎输出相同",
+        "not same as output of .NET regex engine": "与.NET正则引擎输出不同",
+  "steps exceeded limit": "步骤数超过了限制",
+        "current match ": "当前匹配",
+
+  "cancel": "取 消",
+  "save": "保 存",
+
+  "this unit has added anchor": "此单元已添加锚点",
+  "this unit has no anchor": "此单元没有锚点",
+  "current structure of this unit has added anchor": "此单元的当前结构已添加锚点",
+  "Need to select one of Group construct, Quantifier, Bracket, Content, Replacement condition-capture group, Alternation branch": "需要选择 分组构造、量词、括号、内容、替换条件-捕获组、替换分支 的一种",
+        "alternative group need choose structure anchor": "替换条件组需要选择结构锚点",
+
+        "decimal digit": "十进制数字",
+        "word": "文字单词",
+  "whitespace": "空白字符",
+  "word boundary": "单词边界",
+        "non-digit": "非十进制数字",
+  "non-word": "非文字单词",
+        "non-whitespace": "非空白字符",
+  "non-word boundary": "非单词边界",
+  "input start": "输入开头",
+  "input end": "输入结尾",
+  "last match end": "上次匹配结尾",
+
+  patternIsJSPattern: "输入的regex可能javascript的模式。当前工具是为c#的regex而生(虽然也能支持javescript的regex)。请去掉regex的前缀'/'和后缀'/[gimuys]'。现在依然会解析这个regex。",
+
+  "Inline Regex Options": "内联正则选项",
+  "Inline Comment": "内联注释",
+  "End-of-line Comment": "行尾注释", 
+
+  "Letter, Uppercase": "字母，大写",
+  "Non: Letter, Uppercase": "非：字母，大写",
+  "Letter, Lowercase": "字母，小写",
+  "Non: Letter, Lowercase": "非：字母，小写",
+  "Letter, Titlecase": "字母，首字母大写",
+  "Non: Letter, Titlecase": "非：字母，首字母大写",
+  "Letter, Modifier": "字母，修饰符",
+  "Non: Letter, Modifier": "非：字母，修饰符",
+  "Letter, Other": "字母，其他",
+  "Non: Letter, Other": "非：字母，其他",
+  "All letter characters": "所有字母字符",
+  "Non: All letter characters": "非：所有字母字符",
+  "Mark, Nonspacing": "标记，非间距",
+  "Non: Mark, Nonspacing": "非：标记，非间距",
+  "Mark, Spacing Combining": "标记，间距组合",
+  "Non: Mark, Spacing Combining": "非：标记，间距组合",
+  "Mark, Enclosing": "标记，封闭",
+  "Non: Mark, Enclosing": "非：标记，封闭",
+  "All combining marks": "所有组合标记",
+  "Non: All combining marks": "非：所有组合标记",
+  "Number, Decimal Digit": "数字，十进制数",
+  "Non: Number, Decimal Digit": "非：数字，十进制数",
+  "Number, Letter": "数字，字母",
+  "Non: Number, Letter": "非：数字，字母",
+  "Number, Other": "数字，其他",
+  "Non: Number, Other": "非：数字，其他",
+  "All numbers": "所有数字",
+  "Non: All numbers": "非：所有数字",
+  "Punctuation, Connector": "标点，连接符",
+  "Non: Punctuation, Connector": "非：标点，连接符",
+  "Punctuation, Dash": "标点，短划线",
+  "Non: Punctuation, Dash": "非：标点，短划线",
+  "Punctuation, Open": "标点，开始",
+  "Non: Punctuation, Open": "非：标点，开始",
+  "Punctuation, Close": "标点，结束",
+  "Non: Punctuation, Close": "非：标点，结束",
+  "Punctuation, Initial quote": "标点符号、初始引号",
+  "Non: Punctuation, Initial quote": "非：标点符号、初始引号",
+  "Punctuation, Final quote": "标点符号、最终引号",
+  "Non: Punctuation, Final quote": "非：标点符号、最终引号",
+  "Punctuation, Other": "标点，其他",
+  "Non: Punctuation, Other": "非：标点，其他",
+  "All punctuation characters": "所有标点字符",
+  "Non: All punctuation characters": "非：所有标点字符",
+  "Symbol, Math": "符号，数学",
+  "Non: Symbol, Math": "非：符号，数学",
+  "Symbol, Currency": "符号，货币",
+  "Non: Symbol, Currency": "非：符号，货币",
+  "Symbol, Modifier": "符号，修饰符",
+  "Non: Symbol, Modifier": "非：符号，修饰符",
+  "Symbol, Other": "符号，其他",
+  "Non: Symbol, Other": "非：符号，其他",
+  "All symbols": "所有符号",
+  "Non: All symbols": "非：所有符号",
+  "Separator, Space": "分隔符，空白",
+  "Non: Separator, Space": "非：分隔符，空白",
+  "Separator, Line": "分隔符，行",
+  "Non: Separator, Line": "非：分隔符，行",
+  "Separator, Paragraph": "分隔符，段落",
+  "Non: Separator, Paragraph": "非：分隔符，段落",
+  "All separator characters": "所有分隔符字符",
+  "Non: All separator characters": "非：所有分隔符字符",
+  "Other, Control": "其他，控制",
+  "Non: Other, Control": "非：其他，控制",
+  "Other, Format": "其他，格式",
+  "Non: Other, Format": "非：其他，格式",
+  "Other, Surrogate": "其他，代理项",
+  "Non: Other, Surrogate": "非：其他，代理项",
+  "Other, Private Use": "其他，私用",
+  "Non: Other, Private Use": "非：其他，私用",
+  "Other, Not Assigned or Noncharacter": "其他、未赋值或非字符",
+  "Non: Other, Not Assigned or Noncharacter": "非：其他、未赋值或非字符",
+  "All other characters": "所有其他字符",
+  "Non: All other characters": "非：所有其他字符",
+
+
+  /**铁路图 */
+  "Empty": "空",
+  "YES": "是",
+  "NO": "否",
+  "Atomic Group, NonBacktracking": "原子组，不回溯",
+  "Non-Capture": "非捕获组",
+        "followed by:": "后续是:",
+  "not followed by:": "后续不是:",
+  "before is:": "前面是:",
+  "before is not:": "前面不是:",
+
+  "repeat": "重复",
+        "to": "到",
+  "times": "次",
+  "if group": "如果组",
+  "has capture": "有捕获",
+  "if condition ": "如果条件",
+        "satisfied": "满足",
+        "reset": "重置",
+        "save PNG": "保存PNG",
+        "save SVG": "保存SVG",
+ }
+
+ var applyTranslations = function () {
+  var elements = Array.from(document.querySelectorAll("*:not(#patternText *,#inputText *,#graphCt *,#pattern *,#input *,#groups *,#railroad-diagram *)"));
+  if (currentLang == "zh") {
+   document.title = "正则表达式可视化";
+
+   msg = cn;
+   map.clear();
+   map.set("?:", "不捕获到序号组(仅限当前括号)");
+   map.set("?=", "此后内容以此开始");
+   map.set("?!", "此后内容不以此开始");
+   map.set("?&lt;=", "此前内容以此结尾");
+   map.set("?&lt;!", "此前内容不以此结尾");
+   map.set("?&gt;", "不能回溯匹配(如果后续模式匹配失败，则内部模式不回溯)");
+
+   var staticElements = [];
+   Object.keys(cn).forEach(function (key) {
+    elements.forEach(function (el) {
+     try {
+      if (el.children.length &gt; 0) return false;
+      //if (el.closest('#patternText,#inputText,#graphCt,#pattern,#input,#groups')) return false;
+      if (el.value != null &amp;&amp; typeof el.value == "string" &amp;&amp; el.value == key) {
+       el.value = cn[key];
+      }
+      if (el.textContent != null &amp;&amp; el.textContent === key) {
+       el.textContent = cn[key];
+      }
+     } catch (ex) {
+      console.log(ex);
+     }
+    });
+   });
+
+   var options = Array.from(document.querySelectorAll("option")).filter(e =&gt; /\d+th match/g.test(e.textContent));
+   options.forEach(e =&gt; {
+    var num = e.textContent.match(/\d+/g);
+    e.textContent = `第${num}次匹配`;
+   });
+
+   //recovers = [];
+
+   document.getElementById("graphCt").classList.remove("en");
+   document.getElementById("enflowchart").setAttribute("hidden", "");
+            document.getElementById("zhflowchart").removeAttribute("hidden");
+   return;
+  }
+  else {
+            document.title = "Regex dev";
+
+   map.clear();
+   map.set("?:", "not capture(just current bracket)");
+   map.set("?=", "next content begin with inner pattern");
+   map.set("?!", "next content not begin with inner pattern");
+   map.set("?&lt;=", "pre content end with inner pattern");
+   map.set("?&lt;!", "pre content not end with inner pattern");
+   map.set("?&gt;", "atomic group(if next pattern failed, inner pattern dosen't backtrack)");
+   Object.keys(cn).forEach(function (key) {
+    msg[key] = key;
+   });
+   msg.结果不匹配提示 = "The reasoning result of the regex matching is inconsistent with the actual matching result of the .NET regular engine. Please carefully check the matching process and verify the results carefully. \nMaybe there is a bug in the C# regex engine, please switch to validation mode.\nmaybe there is a bug in regexdev...";
+   msg.dotNET5以下简化原因 = "The regex has changed. There may be many reasons, including that the conditional expression (?(c)yesBanch|noBanch) has no noBanch branch but has the '|' character will be simplified, '{1}', '{1,}', '{0,}', '{0,1}', '{10,10}' and other quantifiers will be simplified, inline comments '(?#this is an inline comment)' and ignored spaces will exchange positions with the following quantifiers";
+   msg.所有dotNET平台简化原因 = "The regex has changed. There may be many reasons, including that the conditional expression (?(c)yesBanch|noBanch) has no noBanch branch but has the '|' character will be simplified, .NET5 and above conditional expressions cannot directly contain (?imnsx:exp) or (?imnsx) will be corrected, '{1}', '{1,}', '{0,}', '{0,1}', '{10,10}' and other quantifiers will be simplified, quantifiers after inline comments '(?#this is an inline comment)' will be moved before the inline comments, and quantifiers after ignored spaces will be moved before the spaces";
+
+   msg.有平衡组的命名组 = "Group[{0}] captures content between the end position of the last capture of Group[{1}] and the start position of the current match once(stack push)";
+
+   msg.patternIsJSPattern = "The pattern you entered is probablely a JavaScript regex pattern. This tool is created to support .NET regex patterns(Although it can also support javescript's regex). Please remove the prefix '/' and suffix '/[gimuys]' from the regex. Will still parse this regex now.";
+
+   msg.Group = "Group#";
+
+   document.getElementById("graphCt").classList.add("en");
+   document.getElementById("zhflowchart").setAttribute("hidden", "");
+            document.getElementById("enflowchart").removeAttribute("hidden");
+
+   var staticElements = [];
+   Object.keys(cn).forEach(function (key) {
+    elements.forEach(function (el) {
+     try {
+      if (el.children.length &gt; 0) return false;
+      if (el.value != null &amp;&amp; typeof el.value == "string" &amp;&amp; (el.value.replace(/\s+/g, "") == cn[key] || el.value == cn[key])) {
+       el.value = key;
+      }
+      if (el.textContent != null &amp;&amp; (el.textContent.replace(/\s+/g, "") === cn[key] || el.textContent === cn[key])) {
+       el.textContent = key;
+      }
+     } catch (ex) {
+      console.log(ex);
+     }
+    });
+   });
+
+   var options = Array.from(document.querySelectorAll("option")).filter(e =&gt; /第\s*\d+\s*次匹配/g.test(e.textContent));
+   options.forEach(e =&gt; {
+
+    var num = e.textContent.match(/\d+/g);
+    e.textContent = `${num}th match`;
+   });
+  }
+
+ }
+}</value>
+  </data>
+</root>

@@ -109,6 +109,24 @@ namespace RegexDebug
 					//print colorful AST tree
 					RegexParserUtils.PrintColorASTTree(rootNode);
 
+					{
+						var jsonstr = new RegexNodeJson().GetJsonObject(rootNode);
+						var html = Resource1.Html;
+						File.WriteAllText("Lang.js", Resource1.Lang);
+						File.WriteAllText("regex_ast_railroad.html", html);
+						File.WriteAllText("railroad_json.js", $"var json = {jsonstr};var regex = `{patterndotNET5.Replace("\\","\\\\").Replace("`","\\`")}`");
+						string fileName = "regex_ast_railroad.html";
+						string filePath = Path.Combine(Directory.GetCurrentDirectory(), fileName);
+						ProcessStartInfo psi = new ProcessStartInfo
+						{
+							FileName = "cmd.exe",
+							Arguments = $"/c start \"\" \"{filePath}\"",
+							CreateNoWindow = true,
+							UseShellExecute = false
+						};
+						Process.Start(psi);
+					}
+
 					// generate Markdown style mermaid diagram
 					//string markdown = RegexParserUtils.ASTToStyledMermaid(rootNode);
 					//Console.WriteLine(markdown);
