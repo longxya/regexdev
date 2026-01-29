@@ -1998,7 +1998,7 @@
          }
          var e1 = '&lt;tspan&gt;' + prePattern + '&lt;/tspan&gt;';
          index = chi.start;
-         var e2 = '&lt;tspan class="' + (chi.IsIn ? "include" : "exclude") + '" title="' + (chi.IsIn ? msg.include : msg.exclude) + '"&gt;' + chi.content + '&lt;/tspan&gt;';
+         var e2 = '&lt;tspan class="' + (chi.IsIn ? "include" : "exclude") + '" title="' + (chi.IsIn ? msg.include : msg.exclude) + '"&gt;' + chi.content.replaceWhiteSpace() + '&lt;/tspan&gt;';
          index = chi.end + 1;
          var e3 = "";
 

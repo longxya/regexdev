@@ -108,6 +108,7 @@ Type a regex expression, then enter `parse` on a new line and press `Enter`
 to see the parsed AST output.
 <img width="1505" height="1012" alt="3ac9b184-e044-4ee9-bff8-aff03b881621" src="https://github.com/user-attachments/assets/bee3112d-642c-46ca-a4da-3075428b834f" />
 <img width="1884" height="932" alt="bf41a97a-9685-4457-bf99-2707d6b2404b" src="https://github.com/user-attachments/assets/132f7d72-e9cd-4728-a0bc-7bd48ceddad6" />
+<img width="1888" height="864" alt="5cb489d9-2d4b-4105-9c55-23e1ffbcfb14" src="https://github.com/user-attachments/assets/8f00ef02-ebf7-42ae-a76e-eda44ccac779" />
 
 ---
 
