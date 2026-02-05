@@ -127,7 +127,7 @@
   &lt;script type="text/javascript" src="railroad_json.js"&gt;&lt;/script&gt;
   &lt;style&gt;
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-family: Arial,sans-serif;
       margin: 0;
       /*padding: 20px;*/
       background-color: #f5f5f5;
@@ -350,6 +350,9 @@
      fill: red;
      text-decoration: none;
  }
+ .quantifierOutRect {
+     stroke-opacity: 0.29;
+ }
   &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
@@ -464,7 +467,7 @@
          descWidth = MeasureText.getInstance().getWidth(ast.desc) / MeasureText.scale;
      }
      if (descWidth &gt; box.width) box.width = descWidth;
-     else if (ast.IsComment) box.width /= 1.36;
+     else if (ast.IsComment) box.width /= MeasureText.scale;
 
      box.height = 30;
      box.entry = { x: 0, y: box.height / 2 };
@@ -508,7 +511,7 @@
          //x += child.width + gap;
          h = Math.max(h, child.height);
      });
-     box.width = x - gap;
+     box.width = Math.max(x - gap, 0);
      box.height = h;
      box.children.forEach(c =&gt; {
          c.y = (box.height - c.height) / 2;
@@ -525,7 +528,8 @@
      let w = 0;
 
      ast.children.forEach(c =&gt; {
-         const child = layout(c);
+         let child = layout(c);
+   if (child.width == 0) child = layout({ type: "single", text: "", uid: ast.uid, astid: ast.astid });
          box.children.push(child);
          y += child.height + gap;
          w = Math.max(w, child.width);
@@ -563,7 +567,8 @@
  function layoutconstructure(ast) {
      const beginstr = ast.pattern.length == 1 ? ast.pattern : `(${ast.pattern}`;
 
-     const child = layout(ast.child);
+     let child = layout(ast.child);
+  if (child.width == 0) child = layout({ type: "single", text: "", uid: ast.uid, astid: ast.astid });
      const box = new LayoutBox("constructure", ast);
      const pad = 12;
      child.x = ast.pattern.length * 8 + pad + 8;
@@ -613,8 +618,10 @@
      box.c1After = { text: c1After, width: c1After.length * 8 + pad * 2, x: condNode.width + condNode.x };
 
      // 步骤2：处理右侧c2(yes)、c3(no)两个分支
-     const c2Node = layout(ast.c2);
-     const c3Node = layout(ast.c3);
+     let c2Node = layout(ast.c2);
+  if (c2Node.width == 0) c2Node = layout({ type: "single", text: "", uid: ast.uid, astid: ast.astid });
+  let c3Node = layout(ast.c3);
+  if (c3Node.width == 0) c3Node = layout({ type: "single", text: "", uid: ast.uid, astid: ast.astid });
      box.children.push(c2Node);
      box.children.push(c3Node);
 
@@ -695,7 +702,13 @@
      if (box.type === "sequence") {
          for (let i = 0; i &lt; box.children.length - 1; i++) {
              const a = box.children[i];
-             const b = box.children[i + 1];
+             if (a.width == 0) continue;
+    let b = box.children[i + 1];
+    while (b.width == 0) {
+        i++;
+        if (i &gt;= box.children.length - 1) break;
+        b = box.children[i + 1];
+    }
              if (a.width == 0 || b.width == 0) continue;
              drawLine(parent,
                  x + a.x + a.exit.x,
@@ -974,7 +987,7 @@
          width: box.width, height: box.height - 5, rx: 6, ry: 6,
          class: "box rectArea",
          uid: box.ast.uid,
-         order: box.ast.order,
+         //order: box.ast.order,
          astid: box.ast.astid
      }));
      const t = svgEl("text", {
@@ -988,9 +1001,23 @@
      if (text.startsWith("[") &amp;&amp; text.endsWith("]")) {
       t.innerHTML = text.CreateCharGroupHtml();
   }
+  if (box.ast.IgnorePatternWhitespace &amp;&amp; !box.ast.IsComment &amp;&amp; !text.startsWith("[") &amp;&amp; /([ \t\r\n\f]+)/g.test(text)) {
+      var content = "";
+      var charsWhiteSpaces = text.match(/(\\(\w|\W)|[^ \t\r\n\f])+|([ \t\r\n\f])+/g);
+      for (let i = 0; i &lt; charsWhiteSpaces.length; i++) {
+          var cw = charsWhiteSpaces[i];
+          if (/^([ \t\r\n\f]+)$/.test(cw)) {//被忽略的空白字符
+              content += `&lt;tspan class="IgnorePatternWhitespace"&gt;${cw.replaceWhiteSpace()}&lt;/tspan&gt;`;
+          }
+          else {
+              content += cw;
+          }
+      }
+      t.innerHTML = `&lt;tspan&gt;${content}&lt;/tspan&gt;`;
+  }
      g.appendChild(t);
 
-     if (box.ast.desc != "") {
+     if (box.ast.desc != null &amp;&amp; box.ast.desc != "") {
          const t1 = svgEl("text", {
              x: box.width / 2,
              y: box.height+3/* / 2 + 22.5*/,
@@ -1128,7 +1155,7 @@
      tend.textContent = endstr;
      g.appendChild(tend);
 
-     if (box.ast.desc != "") {
+     if (box.ast.desc != null &amp;&amp; box.ast.desc != "") {
          const t1 = svgEl("text", {
              x: box.width / 2,
              y: -0,
@@ -1173,12 +1200,14 @@
      if (newAst.type == "constructure") {
          if (newAst.GroupingNumber != undefined)
              newAst.desc = `${msg["Group"]}${newAst.GroupingNumber}`;
-         else if (/^\?['&lt;][^-'&gt;]+[^'&gt;]+[^&gt;]/g.test(newAst.pattern)) {
-             var groupnametmp = newAst.pattern.match(/(?&lt;=^\?(&lt;|'))([0-9]+|(?![0-9]+)(\w|[^\x00-\xff])+)(?=-|'|&gt;)/g)[0];
-             if (/^\d+/g.test(groupnametmp))
-                 newAst.desc = `${msg["Group"]}${groupnametmp}`;
-             else newAst.desc = `${msg["Group"]}${newAst.CaptureGroup2rdName}`;
-         }
+         else if (/^\?['&lt;][^-'&gt;]+[^'&gt;]*['&gt;]/g.test(newAst.pattern)) {
+       var groupnametmp = newAst.pattern.match(/(?&lt;=^\?(&lt;|'))([0-9]+|(?![0-9]+)(\w|[^\x00-\xff])+)(?=-|'|&gt;)/g)[0];
+       if (/^\d+/g.test(groupnametmp)) {
+           newAst.desc = `${msg["Group"]}${groupnametmp}`;
+           newAst.CaptureGroup2rdName = groupnametmp;
+       }
+       else newAst.desc = `${msg["Group"]}${newAst.CaptureGroup2rdName}`;
+   }
          else if (/^\?[+\-IMNSXimnsx]+/g.test(newAst.pattern)) {
 
          }
@@ -1457,16 +1486,7 @@
      document.getElementById('save-svg').addEventListener('click', saveAsSVG);
  });
 
- // 保存为PNG图片
- function saveAsPNG() {
-     const svgElement = document.querySelector('#railroad-diagram svg');
-
-     // 克隆SVG以便操作
-     const clonedSvg = svgElement.cloneNode(true);
-
-     // 添加样式定义到克隆的SVG中
-     const style = document.createElement('style');
-     style.textContent = `
+ const savePicStyle = `
          .box { fill: #fff; stroke: #333; stroke-width: 2; }
          .highlight-box { fill: yellow; stroke: #333; stroke-width: 2; }
          .text { font-size: 14px; text-anchor: middle; dominant-baseline: middle; }
@@ -1485,17 +1505,9 @@
          .text.empty{fill:#d3d3d3}.mtEffectArea{fill:gold!important}.BracketRect,.quantifierRect{pointer-events:all}
          .quantifierRect.line{fill:#fff9e6;stroke:#ff9800}.quantifierRect.lazy-line{fill:#e6f7ff;stroke:#2196f3}.quantifierOutRect.line{stroke:#ff9800}
          .quantifierOutRect.lazy-line{stroke:#2196f3}
+         .quantifierOutRect {stroke-opacity: 0.29;}
        `;
-
-     // 确保defs存在
-     let defs = clonedSvg.querySelector('defs');
-     if (!defs) {
-         defs = document.createElementNS(SVG_NS, 'defs');
-         clonedSvg.insertBefore(defs, clonedSvg.firstChild);
-     }
-
-     // 添加彩虹渐变定义
-     const gradientDef = `
+ const gradientDefStatic = `
          &lt;linearGradient id="colorCycle" x1="0%" y1="0%" x2="100%" y2="0%"&gt;
            &lt;stop offset="0%" stop-color="#ff0000" /&gt;
            &lt;stop offset="14%" stop-color="#ff9900" /&gt;
@@ -1507,6 +1519,26 @@
            &lt;stop offset="100%" stop-color="#ff0000" /&gt;
          &lt;/linearGradient&gt;
        `;
+ // 保存为PNG图片
+ function saveAsPNG() {
+     const svgElement = document.querySelector('#railroad-diagram svg');
+
+     // 克隆SVG以便操作
+     const clonedSvg = svgElement.cloneNode(true);
+
+     // 添加样式定义到克隆的SVG中
+     const style = document.createElement('style');
+     style.textContent = savePicStyle;
+
+     // 确保defs存在
+     let defs = clonedSvg.querySelector('defs');
+     if (!defs) {
+         defs = document.createElementNS(SVG_NS, 'defs');
+         clonedSvg.insertBefore(defs, clonedSvg.firstChild);
+     }
+
+     // 添加彩虹渐变定义
+     const gradientDef = gradientDefStatic;
      defs.innerHTML += gradientDef;
      defs.appendChild(style);
 
@@ -1580,26 +1612,7 @@
 
      // 添加样式定义到克隆的SVG中
      const style = document.createElement('style');
-     style.textContent = `
-         .box { fill: #fff; stroke: #333; stroke-width: 2; }
-         .highlight-box { fill: yellow; stroke: #333; stroke-width: 2; }
-         .text { font-size: 14px; text-anchor: middle; dominant-baseline: middle; }
-         .desc { font-size: 10px; text-anchor: middle; dominant-baseline: middle; }
-         .line { stroke: #333; stroke-width: 2; fill: none; }
-         .control { fill: none; stroke: #666; stroke-width: 2; stroke-dasharray: 6,4; }
-         .lazy-line { stroke: #333; stroke-width: 2; fill: none; stroke-dasharray: 6,3; }
-         .label { font-size: 12px; text-anchor: middle; dominant-baseline: middle; }
-         .line.green { stroke: green !important; }
-         .line.red { stroke: red !important; }
-         .line.colorful { stroke: url(#colorCycle) !important; fill: none; }
-         .condition-line { stroke: purple; stroke-width: 2; fill: none; fill: #ff00ff2f; stroke-dasharray: 6,3; }
-         .start-node { fill: #4CAF50; stroke: #333; stroke-width: 1; }
-         .end-node { fill: #F44336; stroke: #333; stroke-width: 1; }
-         .box.colorful { stroke: lightgrey; }
-         .text.empty{fill:#d3d3d3}.mtEffectArea{fill:gold!important}.BracketRect,.quantifierRect{pointer-events:all}
-         .quantifierRect.line{fill:#fff9e6;stroke:#ff9800}.quantifierRect.lazy-line{fill:#e6f7ff;stroke:#2196f3}.quantifierOutRect.line{stroke:#ff9800}
-         .quantifierOutRect.lazy-line{stroke:#2196f3}
-       `;
+     style.textContent = savePicStyle;
 
      // 确保defs存在
      let defs = clonedSvg.querySelector('defs');
@@ -1609,18 +1622,7 @@
      }
 
      // 添加彩虹渐变定义
-     const gradientDef = `
-         &lt;linearGradient id="colorCycle" x1="0%" y1="0%" x2="100%" y2="0%"&gt;
-           &lt;stop offset="0%" stop-color="#ff0000" /&gt;
-           &lt;stop offset="14%" stop-color="#ff9900" /&gt;
-           &lt;stop offset="28%" stop-color="#ffff00" /&gt;
-           &lt;stop offset="42%" stop-color="#00ff00" /&gt;
-           &lt;stop offset="56%" stop-color="#00ffff" /&gt;
-           &lt;stop offset="70%" stop-color="#0000ff" /&gt;
-           &lt;stop offset="84%" stop-color="#9900ff" /&gt;
-           &lt;stop offset="100%" stop-color="#ff0000" /&gt;
-         &lt;/linearGradient&gt;
-       `;
+     const gradientDef = gradientDefStatic;
      defs.innerHTML += gradientDef;
      defs.appendChild(style);
 
@@ -1918,7 +1920,7 @@
 
 
  class MeasureText {
-     static scale = 1.36; // 全局缩放因子，根据实际需要调整
+     static scale = 1.1; // 全局缩放因子，根据实际需要调整
      // 1. 静态属性缓存唯一实例（可设为不可枚举，更隐蔽）
      static #instance = null; // 私有静态属性，外部无法直接修改，更安全
 

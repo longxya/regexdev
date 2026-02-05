@@ -100,7 +100,7 @@ namespace RegexDebug
 				writer.WriteString("type", "condition");
 
 				if (!condition.HaveNoBanch)
-					writer.WriteNumber("HaveNoBanch", 1);
+					writer.WriteNumber("notHaveNoBanch", 1);
 
 				if (condition.condition1 != null)
 				{

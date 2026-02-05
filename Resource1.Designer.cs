@@ -70,14 +70,17 @@ namespace RegexDebug {
         ///  &lt;script type=&quot;text/javascript&quot; src=&quot;railroad_json.js&quot;&gt;&lt;/script&gt;
         ///  &lt;style&gt;
         ///    body {
-        ///      font-family: system-ui, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, &quot;PingFang SC&quot;, &quot;Microsoft YaHei&quot;, sans-serif;
+        ///      font-family: Arial,sans-serif;
         ///      margin: 0;
         ///      /*padding: 20px;*/
         ///      background-color: #f5f5f5;
         ///      /*user-select: none;*/
         ///    }
         ///
-        ///    .regex-text {        /// [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        ///    .regex-text {
+        ///      font-size: 26px;
+        ///      white-space: break-spaces;
+        ///      word-break: break-wor [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
         internal static string Html {
             get {
