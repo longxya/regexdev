@@ -1244,7 +1244,7 @@
              Init(newAst.children[i]);
      }
      else if (newAst.type == "single") {
-         if (newAst.text.match(/^\\\d+$/g) != null || newAst.text.match(/\\k(&lt;|')(\w|[^\x00-\xff])+(&gt;|')/g) != null) {
+         if (newAst.text.match(/^\\\d+$/g) != null || newAst.text.match(/^\\k(&lt;|')(\w|[^\x00-\xff])+(&gt;|')$/g) != null) {
              var groupname = newAst.text.match(/(\d+$)|([^&lt;'\\]+(?=(&gt;|')$))/g)[0];
              if (newAst.IsReference == null || newAst.IsReference)
                  newAst.desc = `${msg["backreference#"]}${groupname}`;
