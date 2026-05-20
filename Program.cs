@@ -85,11 +85,12 @@ namespace RegexDebug
 					patterndotNET5 = sb.ToString();
 
 					Console.ForegroundColor = ConsoleColor.Magenta;
-					Console.Write("Parse pattern is equal original pattern:");
+					//Console.Write("Parse pattern is equal original pattern:");
 					if (patterndotNET5 == pattern)//not equal doesn't mean parsing wrong, it is very highly likely that the regex has been converted
 						Console.ForegroundColor = ConsoleColor.Blue;
 					else Console.ForegroundColor = ConsoleColor.DarkRed;
-					Console.WriteLine((patterndotNET5 == pattern) + (patterndotNET5 == pattern ? "" : "\tnot equal doesn't mean parsing wrong, it is very highly likely that the regex has been converted"));
+					Console.Write($"Parse pattern is{(patterndotNET5 == pattern?"": " not")} equal original pattern.");
+					Console.WriteLine(/*(patterndotNET5 == pattern) + */(patterndotNET5 == pattern ? "" : "\tnot equal doesn't mean parsing wrong, it is very highly likely that the regex has been converted"));
 					Console.ForegroundColor = ConsoleColor.White;
 					if (patterndotNET5 != pattern)
 					{

@@ -609,7 +609,7 @@
          // group条件：组名/组号，生成single类型节点
          //const condText = ast.group ? `${msg["if group"]}${ast.group}${msg["has capture"]}` : "条件判断";
          const condText = ast.group;
-         condNode = layout({ type: "single", text: condText, uid: ast.uid, astid: ast.astid });
+         condNode = layout({ type: "single", text: condText, uid: ast.uid, astid: ast.astid, BackreferenceConditional: true });
      }
      offset = c1Before.length * 8 + pad * 2 + c1After.length * 8 + pad * 2;
      condNode.x += 10 + offset - (c1After.length * 8 + pad * 2);
@@ -1015,6 +1015,9 @@
       }
       t.innerHTML = `&lt;tspan&gt;${content}&lt;/tspan&gt;`;
   }
+    if (box.ast.BackreferenceConditional) {
+        t.innerHTML = text.replace(/^0*(?=\d)/g, `&lt;tspan style="opacity: 0.6;"&gt;$&amp;&lt;/tspan&gt;`);//去掉前导0, 因为反向引用\k'01'和\k'1'是一样的，虽然在正则表达式里两者都表示第1组，但在展示时显示\1更合理一些
+    }
      g.appendChild(t);
 
      if (box.ast.desc != null &amp;&amp; box.ast.desc != "") {
@@ -1246,8 +1249,10 @@
      else if (newAst.type == "single") {
          if (newAst.text.match(/^\\\d+$/g) != null || newAst.text.match(/^\\k(&lt;|')(\w|[^\x00-\xff])+(&gt;|')$/g) != null) {
              var groupname = newAst.text.match(/(\d+$)|([^&lt;'\\]+(?=(&gt;|')$))/g)[0];
-             if (newAst.IsReference == null || newAst.IsReference)
+             if (newAst.IsReference == null || newAst.IsReference) {
+                 groupname = groupname.replace(/^0*(?=\d)/g, '');//去掉前导0, 因为反向引用\k'01'和\k'1'是一样的，虽然在正则表达式里两者都表示第1组，但在展示时显示\1更合理一些
                  newAst.desc = `${msg["backreference#"]}${groupname}`;
+             }
              else if (!newAst.IsReference) {
                  var asciiIndex = Number("0o" + groupname) % 256;
                  var referChar = String.fromCharCode(asciiIndex).replaceAll(" ", `&amp;nbsp;(${msg.space})`);
